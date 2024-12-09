@@ -1,0 +1,10 @@
+## show username
+`whoami`
+## show uid
+`id`
+## switch user
+`su aparnaa`
+## run command as root 
+`sudo ls /root`
+## switch to root
+`sudo -i`

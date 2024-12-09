@@ -28,10 +28,10 @@ CTLR + D
 ## view contents of a file
 `cat new_file.txt`
 ## copy a file
-cp new_file.txt copy_file.txt 
+`cp new_file.txt copy_file.txt `
 ## move (rename) a file
-mv new_file.txt sample_file.txt
+`mv new_file.txt sample_file.txt`
 ## remove/delete a file
-rm new_file.txt
+`rm new_file.txt`
 
 

@@ -10,3 +10,15 @@
 `openssl genrsa -out my-bank.key 1024`
 ## Generate public key using private key
 `openssl rsa -in my-bank.key -pubout > mybank.pem`
+
+#  Login and remote exec commands
+## basic login
+`ssh aparna@192.168.1.2`
+## login with private key
+`ssh -i key_file user@remoteserver`
+## execute command on remote server
+`ssh user@remoteserver command`
+## command redirect
+`ssh user@remoteserver 'command(s)' > destination-file`
+## execute multiple commands on remote server
+`ssh user@remoteserver 'command;uname;who'`
