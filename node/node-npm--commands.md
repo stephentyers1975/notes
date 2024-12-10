@@ -26,3 +26,12 @@
 "dependencies": {
 "body-parser": "^1.18.2", "contentful": "^6.0.0", "cookie-parser": "~1.4.3", "dotenv": "^5.0.0", "execa": "^0.9.0", "express": "^4.16.2", "helmet": "^3.11.0", "lodash": "^4.17.5", "marked": "^0.3.16", "morgan": "^1.9.1", "pug": "~2.0.0-beta6"
 } }
+## run with npm and specific script from package.json
+`npm run start:dev`
+## node process managers for running in production
+- supervisord
+- forever
+- pm2
+## start with pm2 examples
+`pm2 start app.js`
+`pm2 start app.js –i 4`
