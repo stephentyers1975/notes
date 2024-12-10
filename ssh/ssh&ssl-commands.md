@@ -11,6 +11,9 @@
 ## Generate public key using private key
 `openssl rsa -in my-bank.key -pubout > mybank.pem`
 
+# Generat CSR
+`openssl req -newkey rsa:2048 -keyout PRIVATEKEY.key -out MYCSR.csr`
+
 #  Login and remote exec commands
 ## basic login
 `ssh aparna@192.168.1.2`

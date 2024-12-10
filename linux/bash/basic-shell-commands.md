@@ -3,8 +3,15 @@
 `echo $SHELL`
 ## print to screen
 `echo hello`
+## list os related files
+`ls /etc/*release*`  
+`cat /etc/*release*`
+## check os
+`cat /etc/os_release`
 ## List files and folders
 `ls`
+## check file location on disk
+`stat filename`
 ## Change Directory
 `cd my_dir1`
 ## present working directory
