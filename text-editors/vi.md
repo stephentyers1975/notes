@@ -11,8 +11,18 @@
 ### or
 `dd`
 ## copy and paste
-`yy` 
+`yy`
 ### or 
+`p`
+## copy multiple line
+`2yy`
+## copy and paste selected lines
+`V`  
+`yy`  
+`p`
+## cut and paste selected lines
+`V`  
+`d`  
 `p`
 ## scrool up
 `ctrl + u`
