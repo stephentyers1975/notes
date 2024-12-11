@@ -59,3 +59,5 @@ INSERT INTO persons values
 - INSERT
 - SELECT
 - UPDATE
+## load commands into mysql from script
+`sudo mysql < /opt/db-load-script.sql`
