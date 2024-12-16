@@ -3,16 +3,24 @@
 `esc`
 ## insert mode
 `i`
+## last line mode
+`:`
 # vi editor - command mode
 ## move cursor around document
 `arrow keys or h k j l`
-## delete
+## delete/cut a lett
 `x`  
 ### or
 `dd`
-## copy and paste
+## delete 3 lines from current line
+`d3d`
+## undo previous change
+`u`
+## redo  change
+`ctrl r`
+## copy 
 `yy`
-### or 
+## paste, move cursor above line you want to paste into
 `p`
 ## copy multiple line
 `2yy`
@@ -24,22 +32,39 @@
 `V`  
 `d`  
 `p`
-## scrool up
+## find downwards in file
+`/example_text`  
+### next find
+`n`
+### previous find
+`N`
+## find upwards in file
+`?example_text`  
+### next find
+`n`
+### previous find
+`N`
+## scroll up
 `ctrl + u`
 ## scroll down
 `ctrl + d`
-## command
+## save a file
+`YY`
+# last line mode
 `:`
 ## save
 `:w`
 ## quit
 `:q`
+## save 
+`:w`
+## show line numbers
+`:set number`
 ## save and quit
 `:wq`
-## find
-`/example_text`  
-### next find
-`n`
+## quit without quitting
+`:q!`
+
 
 
 
