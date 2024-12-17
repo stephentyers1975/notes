@@ -42,7 +42,7 @@
 `sudo blkid /dev/vdc`
 ## make mounts permanent
 `/etc/fstab`
-![linux filesysystem](/images/file_hieracy.png)
+![linux filesysystem](/images/fstab.png)
 ## echo config into fstab
 `echo "/dev/sdb1 /mnt/ext4 ext4 rw 0 0" >> /etc/fstab`
 
