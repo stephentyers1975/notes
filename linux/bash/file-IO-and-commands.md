@@ -38,6 +38,38 @@
 ## comand to check mounted file systems
 `df -hP`
 
+# File Permissions
+* read -> r -> 4 (octal)
+* write -> w -> 2 (octal)
+* execute -> x -> 1 (octal)
+* no permission -> - -> 0 (octal)
+## Modify file permissions (symbolic)
+`chmod u+rwx test-file` - provide full access to owner
+### another example
+`chmod ugo+r-x test-file` - provide read access and remove execute to owner, group and other
+### another example
+`chmod o-rwx test-file` - remove all access for others
+### another example
+`chmod u-+rwx,g+r-x,o-rwx test-file` - provide full access to owner, read access but remove execute for group and no permissions for others
+## Modify file permissions (numeric)
+`chmod 777 test_file` - provide full access for owner, group and other
+## another example
+`chmod 555 test_file` - Provide read and execute access for owner, group and other
+## another example
+`chmod 660 test_file` - Provide read and write access for owner and group. None for other 
+## another example
+`chmod 750 test_file` - Provide read, write and execute access for owner. Read and execute for group, none for other
+
+# Change File ownership and Group assigned
+## change file ownership (file and group)
+`chown bob:developer test_file` - change test_file ownership to bob and group to developer
+## change just file user ownership
+`chown bob test_file` - changes just the file ownership, group unchanged
+## change just directory and all sub directories reursively user ownership
+`chown -R bob test_dir` - changes recursively the directory and sub directories/file ownership
+## change just the group assigned to file
+`chgrp developer test_file` - changes the group of test_file to developer
+
 # File Compression and Archiving
 ## print file size
 `du -sk file_name`

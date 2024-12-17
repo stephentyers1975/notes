@@ -23,3 +23,30 @@
 `newuser ALL=(ALL) ALL`  
 ### change file permissions of new file to lock down
 `sudo chmod 440 /etc/sudoers.d/newuser`
+
+# Access control files
+![linux accounts](/images/access_control_files.png)
+## username:password:uid:primarygid:GCOS:homedir:shell
+`/etc/passwd`
+## passwords hashed - USERNAME:PASSWORD:LASTCHANGE:MINAGE:MAXAGE:WARN:INACTIVE:EXDATE
+`/etc/shadow`
+## groups - NAME:PASSWORD:GID:MEMBERS
+`/etc/group`
+
+# Manage user accounts
+## add user
+`useradd user_name`
+## example add user
+`useradd -u 1009 -g 1009 -d /home/robert -d /bin/bash -c "Mercury Project Member" bob`
+## set password
+`passwd user_name`
+## check user id detail and fields
+`id user_name`
+## delete a user
+`userdel user_name`
+## add user to group specifying custom gid
+`groupadd -g 1011 group_name`
+## add user to a group with append(important)
+`sudo usermod -a -G groupName userName`
+## delete group
+`groupdel group_name`

@@ -1,9 +1,12 @@
 # Generate Private Public Key pair for SSH purposes
 `ssh-keygen`
+## or
+`ssh-keygen -t rsa`
 # View installed public keys on server
 `cat ~/.ssh/authorized_keys`
 # View configured hosts on server
 `cat ~/.ssh/config`
+
 
 # Generate Private/Public key pair with openSSL
 ## Generate private key
@@ -23,6 +26,8 @@
 #  Login and remote exec commands
 ## basic login
 `ssh aparna@192.168.1.2`
+### or
+`ssh -l users_name host/ip`
 ## login with private key
 `ssh -i key_file user@remoteserver`
 ## execute command on remote server
@@ -36,3 +41,14 @@
 `ssh-copy-id -i ~/.ssh/mykey.pub user@remote-server`
 ## or
 `cat ~/.ssh/mykey.pub | ssh remote-server "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"`
+## or
+`ssh-copy-id user@remoteserver`
+## public key location on remote server
+`~/.ssh/authorized_keys`
+
+# copy files using SCP to remote server
+## basic usage for file copy
+`scp src_dir remote_server:remote_dir`
+## copy dirs recursively and preserve permissions using r and p flags respectively
+`scp -pr src_dir remote_server:remote_dir`
+
