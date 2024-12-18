@@ -64,6 +64,16 @@
 `:wq`
 ## quit without quitting
 `:q!`
+## find and replace all on same line
+`:s/foo/bar/g`
+## ignore case
+`:s/Foo/bar/gi`
+## find and replace all in entire file
+`:%s/foo/bar/g`
+## delete all occurance
+`:s/foo//g`
+## alternative syntaxt to  /
+`:s|foo|bar|`
 
 
 

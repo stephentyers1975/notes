@@ -48,5 +48,24 @@
 `groupadd -g 1011 group_name`
 ## add user to a group with append(important)
 `sudo usermod -a -G groupName userName`
+## change user shell
+`sudo usermod -s /bin/sh test_user`
+## change user home dir
+`sudo usermod -d /home/$USERNAME test_user`
 ## delete group
 `groupdel group_name`
+
+month_input=$1
+1=January
+if [ -z $month_input ]
+then
+        echo "No month given"
+        exit
+fi
+
+if [ $month_input -gt 0 && $month_input -lt 13 ]
+then
+        echo "correct month"
+else
+        echo "Invalid month number given"
+fi

@@ -67,12 +67,12 @@ LimitCORE=infinity
 Description=python test app
 Documentation=http://docrepo.com
 After=postgresql.service
-[service]
+[Service]
 ExecStart= /bin/bash /usr/bin/project-mercury.sh
 User=project_mercury
 Restart=on-failure
 RestartSec=10
-[install]
+[Install]
 WantedBy=graphical.target
 
 # journalctl command
