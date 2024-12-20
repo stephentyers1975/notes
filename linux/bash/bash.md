@@ -37,14 +37,14 @@
 `expr $A / $B`
 `expr $A \* $B`
 ### double parenthesis -> no need to escape asterisk
-`echo $(( A + B ))`
-`echo $(( A - B ))`
-`echo $(( A / B ))`
-`echo $(( A * B ))`
-`echo $(( ++A ))`
-`echo $(( --A ))`
-`echo $(( A++ ))`
-`echo $(( A-- ))`
+`echo $(( $A + $B ))`
+`echo $(( $A - $B ))`
+`echo $(( $A / $B ))`
+`echo $(( $A * $B ))`
+`echo $(( ++$A ))`
+`echo $(( --$A ))`
+`echo $(( $A++ ))`
+`echo $(( $A-- ))`
 
 # Arithmetic Operations = float
 `echo $A / $B | bc -l`
@@ -54,29 +54,29 @@
 ```
 if [ $var1 = condition ]
 then
-    do something
+    execute something
 fi
 ```
 ### else if
 ```
 if [ $var1 = condition ]
 then
-    do something
+    execute something
 elif [ $var1 = another_condition ]
 then
-    do something else
+    execute something else
 fi
 ```
 ### else
 ```
 if [ $var1 = condition ]
 then
-    do something
+    execute something
 elif [ $var1 = another_condition ]
 then
-    do something else
+    execute something else
 else
-    do remaining thing
+    execute remaining thing
 fi
 ```
 ### conditional operators
@@ -169,4 +169,209 @@ do
     ssh $server "uptime"
 done
 ```
+```
+for file in $(ls images)
+do
+        if [[ $file = *.jpeg ]]
+                then
+                new_name=$(echo $file| sed 's/jpeg/jpg/g')
+                mv images/$file images/$new_name
+        fi
+done
+```
+
+# While loops
+
+* Execute a command or a set of commands multiple times but you are not sure how many times.
+* Executeacommandorasetofcommandsuntilaspecificconditionoccurs
+* Createinfiniteloops
+* Menudrivenprograms
+ 
+
+## example syntax
+```
+while [ $rocket_status = "launching"  ]
+do
+    sleep 2
+    rocket_status=rocket-status $mission_name
+if [$rocket_status = "launching"]
+done
+```
+
+```
+while [ $rocket_status = "launching" ] 
+do
+    sleep 2
+    rocket_status=rocket-status $mission_name
+done
+if [$rocket_status="failed" ] 
+then
+       rocket-debug $mission_name
+fi
+```
+
+```
+while true 
+do
+    echo "1. Shutdown"
+    echo "2. Restart"
+    echo "3. Exit Menu"
+    read –p "Enter your choice: " choice
+    if [ $choice  -eq 1 ]
+    then
+        shutdown now
+    elif [ $choice  -eq 2 ]
+    then
+        shutdown –r now
+    elif [ $choice  -eq 3 ]
+    then
+        break
+    else
+        continue
+    fi
+       done
+```
+
+```
+while true
+do
+  echo "1. Add"
+  echo "2. Subtract"
+  echo "3. Multiply"
+  echo "4. Divide"
+  echo "5. Quit"
+
+  read -p "Enter your choice: " choice
+
+  if [ $choice -eq 1 ]
+  then
+        read -p "Enter Number1: " number1
+        read -p "Enter Number2: " number2
+        echo Answer=$(( $number1 + $number2 ))
+  elif [ $choice -eq 2 ]
+  then
+        read -p "Enter Number1: " number1
+        read -p "Enter Number2: " number2
+        echo Answer=$(( $number1 - $number2 ))
+  elif [ $choice -eq 3 ]
+  then
+        read -p "Enter Number1: " number1
+        read -p "Enter Number2: " number2
+        echo Answer=$(( $number1 * $number2 ))
+  elif [ $choice -eq 4 ]
+  then
+        read -p "Enter Number1: " number1
+        read -p "Enter Number2: " number2
+        echo Answer=$(( $number1 / $number2 ))
+  elif [ $choice -eq 5 ]
+  then
+    break
+  fi
+```
+
+# Case statement
+## example syntax
+```
+echo "1. Shutdown"
+echo "2. Restart"
+echo "3. Exit Menu"
+read –p "Enter your choice: " choice
+case $choice in
+        1) shutdown now
+            ;;
+        2) shutdown –r now
+            ;;
+        3) break ;;
+        *) continue
+            ;;
+esac
+```
+
+```
+while true
+do
+  echo "1. Add"
+  echo "2. Subtract"
+  echo "3. Multiply"
+  echo "4. Divide"
+  echo "5. Quit"
+
+  read -p "Enter your choice: " choice
+
+  case $choice in
+    1)
+        read -p "Enter Number1: " number1
+        read -p "Enter Number2: " number2
+        echo Answer=$(( $number1 + $number2 ))
+        ;;
+    2)
+        read -p "Enter Number1: " number1
+        read -p "Enter Number2: " number2
+        echo Answer=$(( $number1 - $number2 ))
+        ;;
+
+    3)
+        read -p "Enter Number1: " number1
+        read -p "Enter Number2: " number2
+        echo Answer=$(( $number1 * $number2 ))
+        ;;
+    4)
+        read -p "Enter Number1: " number1
+        read -p "Enter Number2: " number2
+        echo Answer=$(( $number1 / $number2 ))
+        ;;
+    5)
+        break
+        ;;
+  esac
+```
+
+# Shebang
+## specify what shell a script must run in. Place at top of script
+`#!/bin/bash`
+# exit codes
+## success
+`0`
+## failure
+`>0`
+## see exit code of command
+`echo $?`
+
+# Functions
+## when to use
+* Break up large script that performs many different tasks: • Installing packages
+* Adding users
+* Configuring firewalls
+* Perform Mathematical calculations
+
+## example syntax
+```
+function add(){
+    echo $(( $1 + $2 ))
+}
+
+add 3 5
+```
+
+```
+function add(){
+    echo $(( $1 + $2 ))
+}
+
+sum=$( add 3 5 )
+```
+
+```
+function add(){
+    return $(( $1 + $2 ))
+}
+add 3 5 
+sum=$?
+```
+
+# Shell Checkers
+`apt install shellcheck`
+`yum install shellcheck`
+
+sudo sed -i 's#// \(\$link = mysqli_connect(.*172\.20\.1\.101.*\)#\1#; s#^\(\s*\)\(\$link = mysqli_connect(\$dbHost, \$dbUser, \$dbPassword, \$dbName);\)#\1// \2#' /var/www/html/index.php
 
