@@ -38,6 +38,18 @@
 ## comand to check mounted file systems
 `df -hP`
 
+# File Links
+## show inode and links of a file
+`stat file_name`
+## create hard link -> You can only hard link to files, not folders, and on the same file system
+`ln path_to_target_file path_to_link_file`
+## create soft/symbolic link - You can soft link to files and directories on different
+`ln -s path_to_target_file path_to_link_file`
+## display full path to softlinked file
+`readlink path_to_link_file`
+### or see in directory
+`ls -l path_to_link_file`
+
 # File Permissions
 * read -> r -> 4 (octal)
 * write -> w -> 2 (octal)
@@ -69,6 +81,9 @@
 `chown -R bob test_dir` - changes recursively the directory and sub directories/file ownership
 ## change just the group assigned to file
 `chgrp developer test_file` - changes the group of test_file to developer
+
+# Hard links
+
 
 # File Compression and Archiving
 ## print file size

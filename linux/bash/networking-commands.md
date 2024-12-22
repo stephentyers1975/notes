@@ -1,4 +1,6 @@
 # Networking commands
+# show IP
+`ip a`
 ## show ip interfaces information and addresses
 `ip addr show`
 ## show ip devices

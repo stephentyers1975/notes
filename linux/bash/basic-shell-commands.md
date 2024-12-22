@@ -1,4 +1,19 @@
 # Basic Commands
+## get help
+`cmd --help`
+## detail help
+`man cmd`
+## display types of man pages
+`man man`
+## display help from man section
+`man section_num cmd`
+`man 1 printf`
+## search through man pages for command by keyword
+`apropos search_keyword`
+## search through man pages for command by keyword, filter by specific man section 1 and 8 where commands live
+`apropos -s 1,8 search_keyword`
+## refresh mandb for apropos searches
+`sudo mandb`
 ## show kernel
 `uname`
 ## show kernel version
@@ -34,6 +49,8 @@
 `ls -l`
 ## List hidden files and folders
 `ls -a`
+## List in human readable format -> bytes / kilobytes etc
+`ls -lh`
 ## List files and folders in order they were create
 `ls -lt`
 ## List files and folders in reverse order they were create
@@ -42,6 +59,12 @@
 `stat filename`
 ## Change Directory
 `cd my_dir1`
+## change to previous directory
+`cd -`
+## change to home directory
+`cd`
+## change to home directory
+`cd /`
 ## present working directory
 `pwd`
 ## make directory
@@ -83,6 +106,8 @@ CTLR + D
 `cp new_file.txt copy_file.txt `
 ## copy a file or dirs recursively
 `cp -r /home/bob/dir_struct target_dir `
+## copy a file and preserve ownership/permissions
+`cp -p /home/bob/myfile.txt /home/bob/data/`
 ## move (rename) a file
 `mv new_file.txt sample_file.txt`
 ## remove/delete a file
