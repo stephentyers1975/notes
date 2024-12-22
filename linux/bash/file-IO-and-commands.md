@@ -62,7 +62,7 @@
 ### another example
 `chmod o-rwx test-file` - remove all access for others
 ### another example
-`chmod u-+rwx,g+r-x,o-rwx test-file` - provide full access to owner, read access but remove execute for group and no permissions for others
+`chmod u+rwx,g+r-x,o-rwx test-file` - provide full access to owner, read access but remove execute for group and no permissions for others
 ## Modify file permissions (numeric)
 `chmod 777 test_file` - provide full access for owner, group and other
 ## another example
@@ -82,8 +82,27 @@
 ## change just the group assigned to file
 `chgrp developer test_file` - changes the group of test_file to developer
 
-# Hard links
-
+## SUID bit - execute bit -> set user identification bit to 4 which is the fourth bit. other users can execute file as owner permisions
+`chmod 4664 test_file`
+* -rwSrw-r-- -> Capital S means suid is enabled, but no execute permissions enabled
+`chmod 4764 test_file`
+* -rwsrw-r-- -> lowercase s means suid is enabled, execute permissions enabled
+## SGID bit - set group identification bit to 2 which is the fourth bit. 
+`chmod 2664 test_grouo`
+## Find files with SUID bit set
+`find . -perm /4000`
+## Find files with SGID bit set
+`find . -perm /2000`
+## Set sticky bit with 1 or +t on directory - stops other users deleting
+`chmod +t test_dir`
+### or
+`chmod 1777 test_dir` 
+* drw-rw-rwt -> lowercase t means execut bit is also set
+* drw-rw-rwT -> uppercase means execute bit is not set
+## summary of SUID,SGID and stick bit
+* SUID - Allows users to run an executable with the executable owner's permissions. This is useful for programs that require elevated access.
+* SGID - Similiar to SUID but applies to both files and directories. This is useful for shared resources.
+* Sticky bit - Set on directory and restricts file deletion in directory
 
 # File Compression and Archiving
 ## print file size
