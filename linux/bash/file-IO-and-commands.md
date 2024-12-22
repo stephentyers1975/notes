@@ -84,9 +84,9 @@
 
 ## SUID bit - execute bit -> set user identification bit to 4 which is the fourth bit. other users can execute file as owner permisions
 `chmod 4664 test_file`
-* -rwSrw-r-- -> Capital S means suid is enabled, but no execute permissions enabled
+* -rwSrw-r-- -> Capital S means suid is enabled, but no user/owner execute permissions enabled
 `chmod 4764 test_file`
-* -rwsrw-r-- -> lowercase s means suid is enabled, execute permissions enabled
+* -rwsrw-r-- -> lowercase s means suid is enabled, user/owner execute permissions enabled
 ## SGID bit - set group identification bit to 2 which is the fourth bit. 
 `chmod 2664 test_grouo`
 ## Find files with SUID bit set
@@ -100,9 +100,13 @@
 * drw-rw-rwt -> lowercase t means execut bit is also set
 * drw-rw-rwT -> uppercase means execute bit is not set
 ## summary of SUID,SGID and stick bit
-* SUID - Allows users to run an executable with the executable owner's permissions. This is useful for programs that require elevated access.
-* SGID - Similiar to SUID but applies to both files and directories. This is useful for shared resources.
+* SUID - Allows users to run an executable as the executable owner. This is useful for programs that require elevated access.
+* SGID - Similiar to SUID but applies to both files and directories. This is useful for shared resources. file to be executed as the group that owns the file (similar to SUID). If set on a directory, any files created in the directory will have their group ownership set to that of the directory owner
 * Sticky bit - Set on directory and restricts file deletion in directory
+* Start at 0
+* SUID = 4
+* SGID = 2
+* Sticky = 1
 
 # File Compression and Archiving
 ## print file size
