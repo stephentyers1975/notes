@@ -82,6 +82,15 @@
 ## change just the group assigned to file
 `chgrp developer test_file` - changes the group of test_file to developer
 
+
+# Summary of SUID,SGID and stick bit
+* SUID - Allows users to run an executable as the executable owner. This is useful for programs that require elevated access.
+* SGID - Similiar to SUID but applies to both files and directories. This is useful for shared resources. file to be executed as the group that owns the file (similar to SUID). If set on a directory, any files created in the directory will have their group ownership set to that of the directory owner
+* Sticky bit - Set on directory and restricts file deletion in directory
+* Start at 0
+* SUID = 4
+* SGID = 2
+* Sticky = 1
 ## SUID bit - execute bit -> set user identification bit to 4 which is the fourth bit. other users can execute file as owner permisions
 `chmod 4664 test_file`
 * -rwSrw-r-- -> Capital S means suid is enabled, but no user/owner execute permissions enabled
@@ -99,14 +108,10 @@
 `chmod 1777 test_dir` 
 * drw-rw-rwt -> lowercase t means execut bit is also set
 * drw-rw-rwT -> uppercase means execute bit is not set
-## summary of SUID,SGID and stick bit
-* SUID - Allows users to run an executable as the executable owner. This is useful for programs that require elevated access.
-* SGID - Similiar to SUID but applies to both files and directories. This is useful for shared resources. file to be executed as the group that owns the file (similar to SUID). If set on a directory, any files created in the directory will have their group ownership set to that of the directory owner
-* Sticky bit - Set on directory and restricts file deletion in directory
-* Start at 0
-* SUID = 4
-* SGID = 2
-* Sticky = 1
+## set SUID, GUID and sticky bit on dir
+`chmod u+s,g+s,o+t /home/bob/datadir`
+### or
+`chmod 7755 /home/bob/datadir`
 
 # File Compression and Archiving
 ## print file size
@@ -116,11 +121,25 @@
 ## print file size using ls with -h
 `ls -lh file_name`
 ## Archiving a file
-`tar -cf test.tar file1 file2 file3`
+`tar cf test.tar file1 file2 file3`
+### or
+`tar --create --file archive.tar file1 file2 file3`
+## Append to an existing archive a file
+`tar rf test.tar file4`
+### or
+`tar --append --file archive.tar file4`
 ## show contents of tarball archive
 `tar -tf test.tar`
+### or
+`tar --list --file archive.tar`
 ## extract contents of tarball archive
 `tar -xf test.tar`
+### or
+`tar --extract --file test.tar`
+## extract to different directory
+`tar --extract --file test.tar --directory /tmp`
+### or
+`tar xf test.tar -C /tmp/`
 ## compress tarball to reduce size
 `tar -zcf test.tar file1 file2 file3`
 # Compression tools
@@ -149,16 +168,56 @@
 `updatedb`
 ## find command
 `find /home/michael -name city.txt`
+## find command without path searches current directory
+`find -name city.txt`
+## find command based on file size
+`find /lib64/ -size +10M`
+## find command based on modified status in minutes
+`find /dev/ -mmin -1`
+## find command based on modified status based on 24 hour periods
+`find -mtime 2`
+## find command based on metadata changed status 
+`find -cmin -5`
+## find command based with case insensitive
+`find /dev/ -iname felix`
+## find command based using wildcard
+`find /dev/ -name "f*"`
+## find command based using not operator
+`find /dev/ -not -name "f*"`
+### or
+`find /dev/ \! -name "f*"`
+## find based on size -> c = bytes, k = kilobytes, M = megabytes, G = gigabytes. Use + or - for > and <
+`find -size +512k`
+## combine multiple parameters as in AND operator
+`find / -name "f*" -size 512k`
+## combine multiple parameters as in OR operator
+`find / -name "f*" -o -size 512k`
+## find based on exact specified octal permissions
+`find -perm 664`
+## find based on exact specified symbolic permissions
+`find -perm u=rw,g=rw,o=r`
+## find based on at least specified octal permissions
+`find -perm -664`
+## find that have any of the specified octal permissions
+`find -perm /664`
+## complex example
+`sudo find /var/log/ -perm -g=w ! -perm /o=rw`
+## find directory
+`find /var/ -type d -name 'pets'`
 ## search for pattern within file using grep
-`grep search_pattern filename`
+`grep options search_pattern filename`
 ## search for pattern case insensitive within file using grep
 `grep -i search_pattern filename`
 ## search for pattern recursively within directories using grep
 `grep -r search_pattern filename`
+## colour results
+`grep -r --color search_pattern filename`
 ## search for patterns that don't contain the search pattern using grep
 `grep -v search_pattern filename`
 ## search for whole word pattern using grep
 `grep -w search_pattern filename`
+## search for and return only the found result, not the whole line
+`grep -io search_pattern filename`
 ## search for pattern and display line of text 1 after/below using grep
 `grep -A1 search_pattern filename`
 ## search for pattern and display line of text 1 above/before using grep
@@ -167,6 +226,34 @@
 `grep -B1 4 search_pattern filename`
 ## search for pattern and display lines above and below using grep
 `grep -A1 -B1 search_pattern filename`
+
+# Regular Expressions
+## use extended REGEX with grep
+`grep -Er '0+' /etc/`
+### or use egrep
+`egrep -r '0+' /etc/`
+## find 0 one or more times
+`egrep -r '0+' /etc/`
+## contain at least 3 zeros
+`egrep -r '0{3,}' /etc/`
+## contains 1 and minimum 3 zero's 
+`egrep -r '10{3,}' /etc/`
+## contains 1 and no minimum of zero's but a maximum of 3 zeros
+`egrep -r '10{,3}' /etc/`
+## contains 1 and and exactly 3 zeros
+`egrep -r '10{3}' /etc/`
+## match character exists zero or one time (optional)
+`egrep -r 'disabled?' /etc/` 
+## filter out word only and ignore rest of text
+`egrep -o '\b[A-Z][a-z]{2}\b' /etc/nsswitch.conf`
+## match on or condition
+`egrep -r 'disabled|enabled' /etc/` 
+## count results
+`egrep -c 'disabled|enabled' /etc/` 
+## Range or sets
+`[a-z] [0-9] [abz124]`
+## negate value in range
+`[^a-z] [^0-9] [^abz124]`
 
 # IO Redirection
 ![io_redirection](/images/io_redirection.png)

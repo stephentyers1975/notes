@@ -14,6 +14,8 @@
 `dd`
 ## delete 3 lines from current line
 `d3d`
+## delete n number of lines - hit esc and ndd
+`1000dd
 ## undo previous change
 `u`
 ## redo  change

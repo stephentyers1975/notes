@@ -102,6 +102,32 @@ CTLR + D
 [up arrow] scrolls up the display one line    
 [down arrow] scrolls down the display one line   
 [/] search text
+## view end of file - optional n for number of lines
+`tail -n 20 /var/log/apt/term.log`
+## view start of file - - optional n for number of lines
+`head -n 20 /var/log/apt/term.log`
+## replace substitute term in file -preview
+`sed 's/canda/canada/g' userinfo.txt`
+## replace substitute term in file - inplace file change
+`sed -i 's/canda/canada/g' userinfo.txt`
+## replace substitute term in file ignore case - inplace file change
+`sed -i 's/disabled/enabled/gI' /home/bob/values.conf`
+## replace substitute term in file between line number range - inplace file change
+`sed -i '500,2000s/enabled/disabled/gI' /home/bob/values.conf`
+## cut columns out of text file
+`cut -d ' ' -f 1 userinfo.txt`
+## remove repeated entries that are next to eachother
+`uniq countries.txt`
+## sort
+`sort countries.txt`
+## sort and create unique list
+`sort countries.txt | uniq`
+## differences in file
+`diff file1 file2`
+## differences in file with context
+`diff -c file1 file2`
+## differences side by side
+`sdiff file1 file2`
 ## copy a file
 `cp new_file.txt copy_file.txt `
 ## copy a file or dirs recursively
@@ -140,5 +166,6 @@ CTLR + D
 `echo $PS1` 
 ## update BASH prompt configuration
 `PS1="[\d \t \u@\h:\w ] $ "` 
+
 
 
