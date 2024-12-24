@@ -1,4 +1,12 @@
-# Services commands
+# Init System - units
+* Service
+* Socket
+* Device
+* Timer
+
+# Services commands and systemD targets
+## check systemd service manual
+`man systemd.service`
 ## start a service
 `service httpd start`  
 `systemctl start httpd`
@@ -10,20 +18,37 @@
 `systemctl enable httpd`
 ## disable a service  
 `systemctl disable httpd`
-## disable a service
-`systemctl disable httpd`
-## enable a service
-`systemctl enable httpd`
-## restart a service without interupting normal functionality
+## enable and start a service on non-debian OS
+`systemctl enable --now httpd`
+## disable and stop a service on non-debian OS
+`systemctl disable --now httpd`
+## check if service is enabled  
+`systemctl is-enabled httpd`
+## restart a service gracefully without interupting normal functionality
 `systemct reload httpd`
-## restart a service with interuption
+## restart a service forced with interuption
 `systemct restart httpd`
+## restart a service gracefully before trying forced restart
+`systemct reload-or-restart httpd`
+## view service unit config file
+`systemctl cat ssh.service`
 ## edit service
-`systemctl edit example_service --full`
-## get default target
+`systemctl edit --full example_service`
+## revert service back to default
+`systemctl revert example_service`
+## mask a service so it can't be started or enabled
+`systemctl mask service_name`
+## unmask a service 
+`systemctl unmask service_name`
+## get default systemD target
 `systemctl get-default`
+## change default systemd target
+`systemctl set-default mult-user.target`
 ## list all service units
 `systemctl list-units --all`
+### or
+`systemctl list-units --type service --all`
+
 # Create custom service
 ## services directory
 `/etc/systemd/system`

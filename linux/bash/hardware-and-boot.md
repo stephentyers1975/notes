@@ -32,6 +32,11 @@
 `ls -ltr /etc/systemd/system/default.target`
 ## change default taregt
 `systemctl set-default multi-user.target`
+## switch target without reboot, temporary and oes not change default target
+`systemctl isolate graphical.target`
+## debug - must have root password
+* emergency.target
+* rescue.target
 ### run target list
 * runlevel 0 -> poweroff.target
 * runlevel 1 -> rescue.target
@@ -40,3 +45,24 @@
 * runlevel 4 -> multi-user.target
 * runlevel 5 -> graphical.target
 * runlevel 6 -> reboot.target
+
+## reboot
+`sudo systemctl reboot`
+## reboot force
+`sudo systemctl reboot --force`
+## poweroff
+`sudo systemctl poweroff`
+## poweroff force
+`sudo systemctl poweroff --force`
+## poweroff force force
+`sudo systemctl poweroff --force --force`
+## poweroff scheduled 24 hour clock
+`sudo systemctl poweroff 02:00`
+## poweroff scheduled x minutes later
+`sudo systemctl poweroff +15`
+## reboot scheduled 24 hour clock
+`sudo systemctl -r 02:00`
+## reboot scheduled x minutes later
+`sudo systemctl -r +15`
+## reboot scheduled x minutes later with wall message
+`sudo systemctl -r +15 'scheduled shutdown in 15 mins'`
