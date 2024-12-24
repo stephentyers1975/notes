@@ -114,6 +114,10 @@ CTLR + D
 `sed -i 's/disabled/enabled/gI' /home/bob/values.conf`
 ## replace substitute term in file between line number range - inplace file change
 `sed -i '500,2000s/enabled/disabled/gI' /home/bob/values.conf`
+## delete first 42 lines with SED
+`sed -i 1,42d dump.sql`
+## delete first 42 lines with tail
+`tail +43 dump.sql > dumpfile2`
 ## cut columns out of text file
 `cut -d ' ' -f 1 userinfo.txt`
 ## remove repeated entries that are next to eachother

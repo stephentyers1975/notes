@@ -142,24 +142,82 @@
 `tar xf test.tar -C /tmp/`
 ## compress tarball to reduce size
 `tar -zcf test.tar file1 file2 file3`
+
 # Compression tools
-## bzip2 (adds extension bz2)
+## bzip2 (adds extension bz2) - only can comprees one file, does not pack multiple files
 `bzip2 test.img`
-## gzip (adds extension gz)
+## gzip (adds extension gz) - only can comprees one file, does not pack multiple files
 `gzip test.img`
-## xz (adds extension xz)
+## xz (adds extension xz) - only can comprees one file, does not pack multiple files
 `xz test.img`
 # Uncompression tools
 ## bunzip2 
 `bunzip2 test.img.bz2`
+### or
+`bzip2 --decompresss test.img.bz2`
 ## gunzip 
 `gunzip test.img.gz`
+### or
+`gzip --decompresss test.img.gz` 
 ## unxz 
 `unxz test.img.xz`
-# Read files inside compressed without uncompressing
+### or
+`xz --decompresss test.img.xz`
+## Keep original archive file add
+`--keep`
+### or
+`-k`
+## Read files inside compressed without uncompressing
 `bzcat test.img.bz2`  
 `zcat test.img.gz`  
 `xzcat test.img.xz`
+## zip - can comprees multiple files - combines packing ability of tar with compression
+`zip archive file1`
+## recursively compress all images in directory
+`zip -r archive.zip Pictures/`
+## decompress zip file
+`unzip archive.zip`
+
+# All in one archiving/packing and compression using TAR
+## gzip version
+`tar --create --gzip --file archive.tar.gz file1`
+### or
+`tar czf archive.tar.gz file1`
+## bzip2 version
+`tar --create --bzip2 --file archive.tar.bz2 file1`
+### or
+`tar cjf archive.tar.bz2 file1`
+## bzip2 version
+`tar --create --xz --file archive.tar.xz file1`
+### or
+`tar cJf archive.tar.xz file1`
+## auto selection
+`tar --create --autocompress --file archive.tar.gz file1`
+### or
+`tar caf archive.gz file1`
+
+## extract with tar
+`tar --extract --file archive.tar.gz`
+### or
+`tar xf archive.tar.gz file1`
+## extract to another directory
+`sudo tar xf /home/bob/archive.tar.gz -C /opt`
+### or
+`sudo tar --extract --file /home/bob/archive.tar.gz --directory /opt`
+
+# Backup - rsync
+## local src -> remote dst
+`rsync -a Pictures/ aaron@9.9.9.9:/home/aaron/picturs/`
+## remote src -> local dst
+`rsync -a aaron@9.9.9.9:/home/aaron/picturs/ Pictures/`
+## local src -> local dst
+`rsync -a Pictures/ backup/Pictures/`
+
+# Disk Imaging - dd
+## take image of disk - first umount
+`sudo dd if=/dev/vda of=diskimage.raw bs=1M status=progress`
+## restore image back to disk
+`sudo dd if=diskimage.raw of=/dev/vda bs=1M status=progress`
 
 # Searching for files
 ## locate command (depends on mlocate.db)
@@ -256,6 +314,9 @@
 `[^a-z] [^0-9] [^abz124]`
 
 # IO Redirection
+* stdin 1>
+* stdout <
+* stderr >2
 ![io_redirection](/images/io_redirection.png)
 ## Redirect STDOUT
 ### redirect into file overwrite
@@ -269,9 +330,29 @@
 `echo missingfile 2>> error.txt`
 ### redirect without showing error on screen into bit bucket
 `echo missingfile 2> /dev/null`
+### redirect to multiple files from different output streams
+`grep -r '^The' /etc/ 1> output.txt 2> errors.txt `
+### redirect to one file from different output streams
+`grep -r '^The' /etc/ > all_output.txt 2>&1`
+### or
+`grep -r '^The' /etc/ 1> all_output.txt 2>&1`
 ## Command line pipes
 `grep Hello test.txt | less`
 ## tee command. used to split the output of a program so that it can be both displayed in STDOUT and saved in a file
 `echo $SHELL | tee shell.txt`
 ## tee command with append
 `echo $SHELL | tee -a shell.txt`
+## Redirect input into command
+`sendemailcmdexample test@tst.com < message.txt`
+### or
+```
+sort << EOF
+> 6
+> 3
+> 2
+> EOF
+```
+### expression input
+`bc <<< 1+2+3`
+## piping command output 
+`grep -v '^#' /etc/login.defs | sort | column -t` 
