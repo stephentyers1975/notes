@@ -66,3 +66,7 @@
 `sudo systemctl -r +15`
 ## reboot scheduled x minutes later with wall message
 `sudo systemctl -r +15 'scheduled shutdown in 15 mins'`
+## shutdown in 2 hours
+`sudo shutdown +120`
+## cancel shutdown
+`sudo shutdown -c`

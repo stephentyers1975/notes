@@ -52,6 +52,8 @@
 # Create custom service
 ## services directory
 `/etc/systemd/system`
+## example services for reference
+`/lib/systemd/system`
 ## create service file example my_app.service
 [Unit]  
 Description=My python web application  
@@ -103,9 +105,26 @@ WantedBy=graphical.target
 # journalctl command
 ## show all log entries old to newest
 `journalctl`
+## show log entries follow mode
+`journalctl -f`
 ## show all log entriess from current boot
 `journalctl -b`
 ## show aspecific service log entriess f
 `journalctl -u example.service`
  
- 
+ # another systemd service unit file example
+ ```
+[Unit]
+Description=KodeKloud Service
+After=sshd.service
+
+[Service]
+ExecStart=/usr/local/bin/kkloud
+ExecStop=/usr/local/bin/kkloud --savedata
+KillMode=process
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+ ```
