@@ -7,7 +7,7 @@
 `top`
 ## show specific process by ID number
 `ps 1`
-## show specific process by ID number with user
+## show specific process by ID number with user, cpu and memory
 `ps u 1`
 ## show user specific processes 
 `ps u -U steve`
@@ -36,7 +36,7 @@
 # Background and foreground process management
 ## pause an app and return to terminal. Paused process freezes and does not continue until brought back to fg
 `ctrl z`
-## return to pause app
+## return to paused app
 `fg`
 ## move app to background and continue processing
 `example_cmd &`

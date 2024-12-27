@@ -43,6 +43,8 @@
 `cat /etc/os_release`
 ## check system uptime
 `uptime`
+## see who logged into the system
+`last`
 ## List files and folders
 `ls`
 ## List long list files and folders

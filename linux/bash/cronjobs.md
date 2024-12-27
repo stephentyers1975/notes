@@ -1,6 +1,6 @@
 # CRON jobs (crond service)
 
-![cron reference](/images/cron.png)
+image[cron reference](/images/cron.png)
 ## edit cron jobs
 `crontab -e`
 ## tab fields
