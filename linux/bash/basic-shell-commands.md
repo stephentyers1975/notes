@@ -8,6 +8,8 @@
 ## display help from man section
 `man section_num cmd`
 `man 1 printf`
+## detailed docs can be found in
+`/usr/shar/doc/`
 ## search through man pages for command by keyword
 `apropos search_keyword`
 ## search through man pages for command by keyword, filter by specific man section 1 and 8 where commands live

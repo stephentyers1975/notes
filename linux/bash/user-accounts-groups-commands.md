@@ -8,8 +8,26 @@
 `sudo -iu username`
 ## run command as root 
 `sudo ls /root`
-## switch to root
+## switch to root using account password
 `sudo -i`
+### or
+`sudo --login`
+## login as root using root password
+`su -`
+### or
+`su -l`
+### or 
+`su --login`
+## set root password
+`sudo passwd root`
+## unlock root account
+`sudo passwd --unlock root`
+### or
+`sudo passwd -u root`
+## lock root account
+`sudo passwd --lock root`
+### or
+`sudo passwd -l root`
 ## sudoers file for adding super user
 `/etc/sudoers`
 ## edit sudoers

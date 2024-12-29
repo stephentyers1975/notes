@@ -3,14 +3,21 @@
 `ip a`
 ## show ip interfaces information and addresses
 `ip addr show`
+## show ip interfaces information and addresses with colour
+`ip addr -c show`
 ## show ip devices
 `ip link show`
 ## add ip to interface
 `ip addr add 192.168.1.10/24 dev eth0`
 ## bring interface up
 `sudo ip link set [Interface name] up`
+## remove ip to interface
+`ip addr delete 192.168.1.10/24 dev eth0`
+## bring interface down
+`sudo ip link set [Interface name] down`
 ## network interface file for permanant changes (legacy)
 `/etc/network/interfaces_file`
+
 ## show kernel route information
 `route`
 ## add route
