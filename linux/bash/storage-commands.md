@@ -1,7 +1,9 @@
 # Storage Commands
 ## Disk Partitions
-### list bloc devices
+### list bloc devices - disks, partitions, lvm
 `lsblk`
+### directory
+`/dev/`
 ### list bloc devices
 `ls -l /dev/ | grep "^b"`
 ### list partitions
@@ -27,6 +29,31 @@
 `+550M`
 ### list
 `gdisk -l`
+
+# cfdisk util - gui style
+## inspect storage device
+`sudo cfdisk /dev/sdb/`
+
+# configure and manage swap space - you have multiple swap partitions/files
+## check if swap is used
+`swapon --show`
+## check for free swap partition available
+`lsblk`
+## format swap partition
+`sudo mkswap /dev/vdb3`
+## check new formatted partition
+`swapon --verbose /dev/vdb3`
+## stop using partition as swap space
+`sudo swapoff /dev/vdb3`
+## setup swap on file instead of partition
+`sudo dd if=/dev/zero of=/swap bs=1M count=128`
+## setup swap on file instead of partition with build progress
+`sudo dd if=/dev/zero of=/swap bs=1M count=128 status=progress`
+## set permission of swap file
+`sudo chmod 600 /swap`
+## format swap file
+`sudo mkswap /swap`
+
 
 # Create Filesystems
 ![linux filesysystem](/images/linux_filesystem.png)
