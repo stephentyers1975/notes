@@ -81,7 +81,7 @@
 ### or
 `sudo userdel --remove username`
 `sudo userdel -r username`
-## add user to group specifying custom gid
+## add user to group  specifying custom gid
 `groupadd -g 1011 group_name`
 ## add user to a group with append(important)
 `sudo usermod -a -G groupName userName`

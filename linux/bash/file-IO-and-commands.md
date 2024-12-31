@@ -113,6 +113,41 @@
 ### or
 `chmod 7755 /home/bob/datadir`
 
+# Advanced Permissions - ACLS (+ in file attr)
+## install acl package
+`sudo apt install acl`
+## add acl entry
+`sudo setfacl --modify user:jeremy:rw file3`
+## view acl
+`getfacl file3`
+## set effective
+`sudo setfacl --modify mask:r file3`
+## add groups
+`sudo setfacl --modify group:sudo:rw file3`
+## set zero permissions on user
+`sudo setfacl --modify user:jeremy:--- file3`
+## remove permissions for user
+`sudo setfacl --remove user:jeremy file3`
+## remove permissions for group
+`sudo setfacl --remove group:sudo file3`
+## remove all acls 
+`sudo setfacl --remove-allfile3`
+## apply recursively
+`sudo setfacl --recursive -m user:jeremy:rwx dir1`
+## remove recursively
+`sudo setfacl --recursive -remove user:jeremy:rwx dir1`
+## enable append only on a file
+`sudo chattr +a newfile`
+## remove append only on a file
+`sudo chattr -a newfile`
+## enable immutable attribute on a file
+`sudo chattr +i newfile`
+## check atributes
+`ls attr`
+## remove immutable attribute on a file
+`sudo chattr -i newfile`
+
+
 # File Compression and Archiving
 ## print file size
 `du -sk file_name`

@@ -156,6 +156,7 @@
 ## mount permantly
 `/etc/fstab`
 `ip_address:/folder_path nfs defaults 0 0`
+`127.0.0.1:/home /mnt       nfs    defaults    0 0`
 
 ## NFS config
 `/etc/exports`
@@ -167,27 +168,98 @@
 ## mount shared folder locally on client with mount
 `mount hostname:/path_to_folder /mnt/software/repos`
 
+# NBD - Network Block Devices
+## NBD Server
+## install server package
+`sudo apt install nbd-server`
+## edit configuration file - comment out user and group lines
+`/etc/nbd-server/config`
+## add below to configuration file
+`allowlist = true`
+## add export definitions at end of file
+```
+[partition2]
+        exportname=/dev/sda1
+```
+## restart NBD daemon
+`sudo systemctl restart nbd-server.service`
+## look up extra configuration in manual
+`man 5 nbd-server`
+
+## NBD Client
+## install NBD client
+`sudo apt install nbd-client`
+## load kernal module to extend kernal
+`sudo modprobe nbd`
+## make kernal load permanent
+`sudo vim /etc/modules-load.d/modules.conf`
+## insert the below in file
+`nbd`
+## list remote block device on a server
+`sudo nbd-client -l 127.0.0.1`
+## attach remote block device
+`sudo nbd-client 127.0.0.1 -N partition2`
+### or
+`sudo nbd-client hostname -N partition2`
+## mount remote block device
+`sudo mount /dev/nbd0 /mnt`
+## detach NBD from system
+### unmount
+`sudo umount /mnt`
+### detach
+`sudo nbd-client -d /dev/nbd0`
+
+
 ## Logical Volume Manager LVM
+* PV -> Physical volume - partition or physical disk
+* VG -> Volume group
+* LV -> Logical Volume 
+* PE -> Physical Extent
+
 ## install lvm2
 `apt install lvm2`
 ## step 1 create physical volume (PV) from physical disk
 `pvcreate /dev/sdb`
 ## list details of all PV's
 `pvdisplay`
+## show PVS size
+`sudo pvs`
+## list PVs
+`sudo lvmdiskscan`
+## remove PV
+`sudo pvremove /dev/sde`
 ## step 2 create volume group
+`vgcreate [name_of_group] [name_of_pvs_to_use]`
 `vgcreate example_vg /dev/sdb`
 ## list details of all VG's
 `vgdisplay`
+## list size of all VG's
+`sudo vgs`
+## extend VG by adding more disks
+`sudo vgextend my_volume /de/sde`
+## reduce VG by removing more disks
+`sudo vgreduce my_volume /de/sde`
 ## step 3 create logical volumes from volume group
+`sudo lvcreate --size 2G --name partition1 my_volume`
 `lvcreate -L 1G -n vol1 example_vg`
 ## list logical volumse
 `lgdisplay`
 ### or use lvs for summary of logical volume, volume group membership and capacity
 `lvs`
+## extend logical volume
+`sudo lvresize --size 100%VG my_volume/partition1`
+## resize logical volume
+`sudo lvresize --size 2G my_volume/partition1`
+## display details
+`sudo lvdisplay`
 ## step 5 create filesystem on volume
 `mkfs.ext4 /dev/example_vg/vol1`
 ## step 6 mount filesystem
 `mount -t ext4 /dev/example_vg/vol1 /mnt/vol1`
+## resize logical volume and file system
+`sudo lvresize --resizefs --size 3G my_volume/partition1`
+## remove logical volume
+`sudo lvremove /dev/vg_name/vg_name`
 
 ## resize logical volume
 ### check size of volume group first
@@ -198,3 +270,32 @@
 `resize2fs /dev/example_vg/vol1`
 
 ![logical volume](/images/logicalvolume.png)
+
+# Monitor Storage Performance
+## install systat
+`sudo apt install sysstat`
+* iostat
+* pidstat
+
+## show summary of stats since booted up
+`iostat`
+* tps - transfers per second
+* kB_read/s - kilobytes read per second
+* kB_wrtn/s - kilobytes written per second
+* kB_read - total kilobytes read per second
+## refresh stats every second
+`iostat 1`
+## show processes writing data
+`pidstat -d`
+`pidstat -d 1` 
+## view mapping of device
+`sudo dmsetup info /dev/dm-0`
+## show device utilisation report
+`iostat -d`
+## show device stats in human readable format
+`iostat -h`
+`pidstat -d --human`
+## show all partitions and devices
+`iostat -p ALL`
+## shaow partitions on sda device
+`iostat -p sda`
