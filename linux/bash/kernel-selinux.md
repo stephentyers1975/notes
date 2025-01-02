@@ -62,6 +62,7 @@
 `sudo setenforce 1`
 ### permantly enforce
 `/etc/selinux/config`
+`SELinux status:                 disabled`
 ### view policy
 `less mymodule.te`
 ### change context of user label on file

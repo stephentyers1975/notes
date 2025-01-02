@@ -37,3 +37,23 @@
 `timedatectl list-timezones`
 ## set timezones  -> alter symlink to /etc/localtime
 `timedatectl set-timezone time_zone`
+
+# Time services - NTP
+## see available timezones
+`timedatectl list-timezones`
+## set timezone
+`sudo timedatectl set-timezone America/Los_Angeles`
+## check timezone
+`timedatectl`
+## install timesynce utility
+`sudo apt install systemd-timesyncd`
+## turn on syncronisation
+`sudo timedatectl set-ntp true`
+## check timesynce service
+`systemctl status systemd-timesyncd.service`
+## edit service configuration
+`sudo vim /etc/systemd/timesyncd.conf`
+## restart timesynce service
+`systemctl restart systemd-timesyncd.service`
+## check status
+`sudo timedatectl show-timesync`

@@ -174,6 +174,20 @@ network:
 `iptables -A OUTPUT -p TCP --dport 80 -j DROP`
 `iptables -A OUTPUT -p TCP --dport 443 -j DROP`
 
+# Firewalld
+## list active zones
+`firewall-cmd --get-active-zones`
+## set default zone to public 
+`firewall-cmd --set-default-zone=public`
+## add rule to zone
+`sudo firewall-cmd --zone=public --add-port=3003/tcp --permanent`
+## reload firewall
+`firewall-cmd --reload`
+## list rules in zone
+`firewall-cmd --zone=public --list-ports`
+## test connection
+`ss -tuln | grep 3003`
+
 # port redirection
 ## enable ip forwarding
 `/etc/sysctl.conf`
@@ -257,23 +271,5 @@ upstream mywebservers {
 ## reload service to apply
 `sudo systemctl reload nginx.service`
 
-# Time services - NTP
-## see available timezones
-`timedatectl list-timezones`
-## set timezone
-`sudo timedatectl set-timezone America/Los_Angeles`
-## check timezone
-`timedatectl`
-## install timesynce utility
-`sudo apt install systemd-timesyncd`
-## turn on syncronisation
-`sudo timedatectl set-ntp true`
-## check timesynce service
-`systemctl status systemd-timesyncd.service`
-## edit service configuration
-`sudo vim /etc/systemd/timesyncd.conf`
-## restart timesynce service
-`systemctl restart systemd-timesyncd.service`
-## check status
-`sudo timedatectl show-timesync`
+
 
