@@ -27,3 +27,13 @@
 # User privileges
 ## add user to sudo group
 `sudo gpasswd -a sudo username`
+
+# Timezones
+## config file
+`/etc/localtime`
+## check timezone 
+`timedatectl`
+## list timezones available 
+`timedatectl list-timezones`
+## set timezones  -> alter symlink to /etc/localtime
+`timedatectl set-timezone time_zone`

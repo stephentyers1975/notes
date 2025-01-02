@@ -297,6 +297,8 @@
 `sudo find /var/log/ -perm -g=w ! -perm /o=rw`
 ## find directory
 `find /var/ -type d -name 'pets'`
+## find files by owner and copy to another directory preserving attr and directories
+`find . -user ravi -exec cp --parents --preserve {} /media \;`
 ## search for pattern within file using grep
 `grep options search_pattern filename`
 ## search for pattern case insensitive within file using grep

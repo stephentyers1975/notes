@@ -28,6 +28,9 @@
 `sudo crontab -e -u user_name`
 ## remove current user crontab
 `crontab -r`
+## allow and deny files -> place usernames inside
+`cron.allow`
+`cron.deny`
 ## remove different user crontab
 `sudo crontab -r -u user_name`
 ## example job
