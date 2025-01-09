@@ -59,3 +59,16 @@
 `docker run -e APP_COLOR=blue image_name`
 ## inspect environment variables on running container
 `docker inspect container_name/ID`
+
+# Commands and Entry points in docker file
+## executes when container in run and can get overidden by manual command added in the docker run command
+`CMD sleep 5`
+## Entrypoint - command thats run when container is started. Commands parameters added in docker run file are appended to entry point
+`ENTRYPOINT["sleep"]`
+# Used together
+```
+ENTRYPOINT["sleep"]
+CMD['5']
+```
+## overide ENTRY POINT AND CMD in the command line
+`docker run --entrypoint sleep2.0 ubuntu-sleeper 10`
