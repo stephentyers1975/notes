@@ -31,8 +31,14 @@
 `docker run -i centos bash`
 ## run container with interactive terminal
 `docker run -it centos bash`
+
+# Mapped port
 ## run container with mapped port
 `docker run -p 80:8080 nginx`
+
+# Custom name
+## run container with custom name
+`docker run -p 80:8080 --name custom_name nginx`
 
 # Persisting Data
 ## map host directory to container directory
@@ -40,9 +46,16 @@
 
 # Create your own image
 ## Build image from Dockerfile locally command
-`docker build Dockerfile -t registry_name/my-custom-app-image`
+`docker build -t registry_name/my-custom-app-image Dockerfile`
+## login to registry
+`docker login`
 ## Push built image to registry command
 `docker push registry_name/my-custom-app-image`
 ## view build history of image
 `docker history registry_name/my-custom-app-image`
 
+# Environment variables
+## inject environment variable at run
+`docker run -e APP_COLOR=blue image_name`
+## inspect environment variables on running container
+`docker inspect container_name/ID`
