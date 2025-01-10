@@ -17,6 +17,8 @@
 `docker stop container_name/ID`
 ## remove a container
 `docker rm container_name/ID`
+## forcefully remove a running container
+`docker rm -f container_name/ID`
 ## list images on host
 `docker images`
 ## remove a image
@@ -53,6 +55,8 @@
 `docker push registry_name/my-custom-app-image`
 ## view build history of image
 `docker history registry_name/my-custom-app-image`
+## remove dangling images
+`docker image prune -a`
 
 # Environment variables
 ## inject environment variable at run
