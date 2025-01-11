@@ -101,7 +101,7 @@
 
 * GIT Merge - complete picture of the commit history and branch evolution
 !['merge'](/images/merge.png)
-* GIT Rebase - Tidies up hiistory by moving branch commits to the main branch tip
+* GIT Rebase - Tidies up history by moving branch commits to the main branch tip
 !['rebase'](/images/rebase.png)
 * Squashing commits - consolidates commits into one commit providing a clean linear history in the main branch, but at the cost etailed commit history.
 !['squash'](/images/squash.png)
