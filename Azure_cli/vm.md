@@ -11,6 +11,12 @@ az vm create -n MyVm -g MyResourceGroup \
 ## delete a vm
 `az vm delete --name datacenter-vm -g kml_rg_main-ef6fdc6b409b44c4`
 `az vm delete --name datacenter-vm -g kml_rg_main-ef6fdc6b409b44c4 --yes`
+## stop a vm
+`az vm stop --resource-group MyResourceGroup --name MyVM`
+## deallocate a vm
+`az vm deallocate --resource-group <ResourceGroupName> --name <VMName>`
+## start a vm
+`az vm start --resource-group <ResourceGroupName> --name <VMName>`
 ## view vm ip addresses
 `az vm list-ip-addresses -g <ResourceGroupName> -n <VMName>`
 ## list disks
@@ -30,3 +36,7 @@ az vm create -n MyVm -g MyResourceGroup \
 `az vm show --resource-group <ResourceGroupName> --name <VMName> --query "{name:name, disks:storageProfile.dataDisks[*].{diskName:name, diskSize:sizeGb}}" -o table`
 ## add NIC to vm
 `az vm nic add --resource-group <ResourceGroupName> --vm-name <VMName> --nics <NicName>`
+## list a vm's NICS
+`az vm nic list --resource-group <ResourceGroupName> --vm-name <VMName>`
+## associate public ip to nic
+`az network nic ip-config update --resource-group <ResourceGroupName> --nic-name <NicName> --name <IpConfigName> --public-ip-address <PublicIpName>`
