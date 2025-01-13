@@ -8,6 +8,10 @@ az vm create -n MyVm -g MyResourceGroup \
             --image Ubuntu2204 --size Standard_DS1_v2  --storage-sku Standard_LRS \
             --generate-ssh-keys --authentication-type ssh
 ```
+```
+az vm create --name nautilus-vm --resource-group kml_rg_main-f6e4965b21f547dc --image Ubuntu2204 --size Standard_B2s --storage-sku Standard_LRS --generate-ssh-keys --admin-username azureuser --os-
+disk-size-gb 30
+```
 ## delete a vm
 `az vm delete --name datacenter-vm -g kml_rg_main-ef6fdc6b409b44c4`
 `az vm delete --name datacenter-vm -g kml_rg_main-ef6fdc6b409b44c4 --yes`
@@ -17,10 +21,16 @@ az vm create -n MyVm -g MyResourceGroup \
 `az vm deallocate --resource-group <ResourceGroupName> --name <VMName>`
 ## start a vm
 `az vm start --resource-group <ResourceGroupName> --name <VMName>`
+## deallocate a vm
+`az vm deallocate --resource-group <ResourceGroupName> --name <VMName>`
+## show vm status
+`az vm get-instance-view --resource-group <ResourceGroupName> --name <VMName>`
 ## view vm ip addresses
 `az vm list-ip-addresses -g <ResourceGroupName> -n <VMName>`
 ## list disks
 `az disk list`
+## resize vm
+`az vm resize --resource-group myResourceGroup --name nautilus-vm --size <new-vm-size>`
 ## attach disk to vm
 `az vm disk attach --resource-group <ResourceGroupName> --vm-name <VMName> --name <DiskName>`
 `az vm show --resource-group <ResourceGroupName> --name <VMName> --show-details`

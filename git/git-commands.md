@@ -4,6 +4,8 @@
 `git config --global user.email "steve@email.com"`
 ## initialize repp
 `git init`
+## create bare repo
+`sudo git init --bare media.git`
 ## check files that have changed
 `git status`
 ## stage changes
@@ -16,6 +18,10 @@
 `git add .`
 ## unstage file
 `git reset file1`
+## clean repo files - forces the cleaning of untracked files
+`git clean -f`
+## clean repo files and dirs - forces the cleaning of untracked files
+`git clean -fd`
 ## commit changes
 `git commit -m "commit msg"`
 ## remove unwanted file from project - keep in directory

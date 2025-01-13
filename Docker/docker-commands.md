@@ -76,3 +76,9 @@ CMD['5']
 ```
 ## overide ENTRY POINT AND CMD in the command line
 `docker run --entrypoint sleep2.0 ubuntu-sleeper 10`
+
+## copy files between host and containers
+`docker cp host_src container_name:dst_folder`
+
+## create image from running container
+`docker commit container_name image:tag`
