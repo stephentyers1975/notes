@@ -80,6 +80,10 @@ selector:
 `kubectl create -f pod-definition.yaml`
 ## apply pod from definition file - will create if new
 `kubectl apply -f pod-definition.yaml`
+## create pod with wildcard
+`kubectl create -f .`
+## apply pod with wildcard
+`kubectl apply -f .`
 
 # Replica set
 ## create replicaset from definition file
