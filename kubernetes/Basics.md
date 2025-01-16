@@ -17,6 +17,8 @@
 `kubectl get nodes`
 ## get nodes - extended information
 `kubectl get pods -o wide`
+## get nodes - All namespaces
+`kubectl get pods -A`
 ## create pod
 `kubectl run pod_name --image=container_image_name`
 ## create pod in dry run mode and output the genrated yaml

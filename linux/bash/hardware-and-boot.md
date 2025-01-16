@@ -20,7 +20,7 @@
 ## list entire hardware configuration
 `lshw`
 
-# Boot Process -> BIOS POST -> Bott Loader(GRUB2 1st sector of HD /bootfile) -> Kernel Initilization -> INIT Process(SYSTEMD)
+# Boot Process -> BIOS POST -> Boot Loader(GRUB2 1st sector of HD /bootfile) -> Kernel Initilization -> INIT Process(SYSTEMD)
 ## check init system that used - systemd or system5
 `ls -l /sbin/init`
 ## check run level 3=cmdline -> systemd(multiuser.target) 5=gui -> systemd(graphical.target)
