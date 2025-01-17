@@ -2,6 +2,8 @@
 ## Disk Partitions
 ### list bloc devices - disks, partitions, lvm
 `lsblk`
+### list block uuid's
+`blkid`
 ### directory
 `/dev/`
 ### list bloc devices
@@ -86,6 +88,8 @@
 ## mount filesystem
 `mkdir /mnt/ext4`
 `mount /dev/sdb1 /mnt/ext4`
+## mount filesystem and create mount directory in one go
+`mount --mkdir /dev/sdb1 /mnt/ext4`
 ## unmount filesystem
 `umount /mnt/ext4`
 ## check mounted filesystem
@@ -106,6 +110,8 @@
 `UUID=ec7778797973  /boot       ext4    ro,noexec    0 2`
 ## use UUID of device
 `sudo blkid /dev/vdb1`
+## mount all filesystems in fstab file
+`sudo mount -a`
 
 # Filesystem mount options
 ## show all mounted filesystems including memory

@@ -25,6 +25,8 @@ disk-size-gb 30
 `az vm deallocate --resource-group <ResourceGroupName> --name <VMName>`
 ## show vm status
 `az vm get-instance-view --resource-group <ResourceGroupName> --name <VMName>`
+## show vm region
+`az vm show --resource-group <ResourceGroupName> --name <VMName> --query location --output tsv`
 ## view vm ip addresses
 `az vm list-ip-addresses -g <ResourceGroupName> -n <VMName>`
 ## list disks

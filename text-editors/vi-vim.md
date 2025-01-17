@@ -76,6 +76,8 @@
 `:s/foo//g`
 ## alternative syntaxt to  /
 `:s|foo|bar|`
+## paste command output into file
+`:.!cmd`
 
 
 
