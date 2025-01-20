@@ -1,0 +1,2 @@
+# Securing Virtual Machine SSH Access
+`az vm create --name devops-vm --resource-group kml_rg_main-1a7bf4b8ec30445d --image Ubuntu2204 --size Standard_B1s --storage-sku Standard_LRS  --ssh-key-value ~/.ssh/id_rsa.pub --authentication-type ssh --admin-username azureuser --location westus`

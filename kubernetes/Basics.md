@@ -2,10 +2,16 @@
 
 !["Kubernetes components"](/images/kub-compnents.png)
 
-* Master node has kube-apiserver component running
-* Master node has etcd key/value store, controller manager and scheduler service
-* Worker node has kubelet agent component running responsible for report health of worker node and carry out actions of master node.
+# Master Node services
+* etcd -> key/value store that stores information about the cluser
+* Scheduler service -> schedules applications/containers on nodes
+* kube-apiserver -> orchestrates all operations within the cluster
+* kube controller manager -> Contains node controller and replication controller. Node controller manages adding nodes to cluster, handles unavailability/destroyed state of node. Replication manager handles that the desired number of containers are running at all times in a replication group/set. 
+
+# Worker Node services
+* Worker node has kubelet agent component running responsible for report health of worker node and listen carry out actions of master node kube-apiserver.
 * Worker node has container runtime running.
+* worker node has kube-proxy service to enable intra container communication across nodes
 
 !["Master vs Worker node"](/images/masterworker.png)
 
@@ -72,10 +78,10 @@ spec:
       containers:
         - name: nginx-container
           image: nginx
-replicas: 3
-selector: 
-  matchLabels:
-      type: front-end
+  replicas: 3
+  selector: 
+    matchLabels:
+        type: front-end
 ```
 
 ## create pod from definition file
