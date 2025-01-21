@@ -41,8 +41,14 @@ spec:
 `kubectl get pods -A`
 ## create pod
 `kubectl run pod_name --image=container_image_name`
+## create pod and expose container port
+`kubectl run custom-nginx --image=nginx --port=8080`
+## create pod and expose container port and creates ClusterIP service in one command. Must use --port and --expose together.
+`kubectl run httpd --image=httpd:alpine --port=80 --expose`
 ## create pod in dry run mode and output the genrated yaml
 `kubectl run pod_name --image=container_image_name --dry-run=client -o yaml`
+## expose pod to a service defined with a ClusterIP
+`kubectl expose pod redis --type=ClusterIP --name=redis-service --port=6379`
 
 # Deploy with YAML file
 ## create pod from definition file
@@ -53,4 +59,11 @@ spec:
 `kubectl create -f .`
 ## apply pod with wildcard
 `kubectl apply -f .`
-
+# Replace a pod using the data in pod.json
+`kubectl replace -f ./pod.json`
+# Replace a pod based on the JSON passed into stdin
+`cat pod.json | kubectl replace -f -`
+# Update a single-container pod's image version (tag) to v4
+`kubectl get pod mypod -o yaml | sed 's/\(image: myimage\):.*$/\1:v4/' | kubectl replace -f -`
+# Force replace, delete and then re-create the resource
+`kubectl replace --force -f ./pod.json`
