@@ -65,9 +65,9 @@ spec:
 `kubectl delete replicaset replicaset_name`
 ## update replica set after instance count change edit in yaml file
 `kubectl replace -f replicaset-definition.yaml`
-### or directly via cmd by providing file (does not update number in file as in first option)
+### or directly via cmd by providing file (does not update number in file as in replace option)
 `kubectl scale --replicas=6 -f replicaset-definition.yaml`
-### or by providing replicaset name (does not update number in file as in first option)
-`kubectl scale --replicas=6 -f replicaset replicaset_name`
+### or by providing replicaset name (does not update number in file as in replace option)
+`kubectl scale --replicas=6 replicaset replicaset_name`
 ## edit replica set
 `kubectl edit replicaset replicaset_name`
