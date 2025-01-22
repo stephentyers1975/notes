@@ -38,10 +38,9 @@ metadata:
 spec:
   template:
     metadata:
-    name: myapp-pod
-    labels:
-      app: myapp
-      type: front-end
+      labels:
+        app: myapp
+        type: front-end
     spec:
       containers:
         - name: nginx-container
