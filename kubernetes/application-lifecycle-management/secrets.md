@@ -2,7 +2,7 @@
 * 2 steps
 * secrets are encoded not encrypted
 * secrets in ETCD are not encrypted
-  * enable encryption at rest
+  * enable encryption at rest - kubernetes docs
 * anyone able to create pods/deployments in the same namespace can access the secrets
   * configure least-privilege RBAC access to secrets
 * Consider third-party secrets store providers
