@@ -89,3 +89,9 @@ spec:
 `kubectl get events -o wide`
 ## view scheduler logs
 `kubectl logs my-custom-scheduler --name-space=kube-system`
+
+!["scheduler1](/images/scheduler-profiles.png)
+
+!["scheduler1](/images/scheduler-profiles2.png)
+
+!["scheduler1](/images/scheduler-profiles3.png)

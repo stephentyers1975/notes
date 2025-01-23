@@ -10,6 +10,7 @@
 * memory cannot be throttle as it's assigned to processes. to free it the pod is killed.
 
 !["cpu limits settings recomendations"](/images/cpulimits.png)
+
 !["cpu limits settings recomendations"](/images/memorylimits.png)
 
 * Memory
