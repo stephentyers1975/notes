@@ -35,6 +35,10 @@
 `kubectl descibe pod pod_name`
 ## edit pod configuration yaml
 `kubectl edit pod pod_name`
+## view pod logs 
+`kubectl logs pod_name`
+## view container logs inside pod
+`kubectl logs pod_name -c container_name`
 
 # YAML in Kubernetes
 
