@@ -29,6 +29,29 @@
 * Bindings
 * Others
 
+# types of ETCD install
+## Stacked etcd
+* Topology: In a stacked setup, the etcd members are co-located with the Kubernetes control plane components (API server, controller manager, and scheduler) on the same nodes.
+
+* Simplicity: Easier to set up and manage since all components are on the same nodes.
+
+* Resource Utilization: May lead to resource contention between etcd and control plane components. Etcd is resource-intensive and might require significant disk I/O and network bandwidth2.
+
+* Fault Tolerance: If a node fails, both the control plane instance and an etcd member are lost, potentially risking the availability and resilience of your cluster. To mitigate this, it's recommended to run a minimum of three stacked control plane nodes1.
+
+* Infrastructure Cost: Requires fewer nodes since etcd and control plane components share the same hardware
+
+## External etcd
+* Topology: In an external setup, the etcd members run on separate nodes from the Kubernetes control plane components.
+
+* Reliability: Provides better fault tolerance. Losing a control plane node won't affect the etcd members and vice versa2.
+
+* Resource Isolation: Isolates etcd from control plane components, preventing resource contention. This setup can improve the performance and reliability of both etcd and the control plane2.
+
+* Complexity: Setting up and managing an external etcd cluster is more complex and requires dedicated nodes for etcd.
+
+* Infrastructure Cost: Requires more nodes, as you need separate nodes for the control plane and etcd cluster members
+
 # ETCD version 2 commands
 ```
 etcdctl backup
