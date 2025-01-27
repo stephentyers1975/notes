@@ -7,6 +7,9 @@
 # View configured hosts on server
 `cat ~/.ssh/config`
 
+# naming conventions for certificates and keys
+* Certificate (Public Key) -> *.crt *.pem
+* Private Key -> *.key *-key.pem
 
 # Generate Private/Public key pair with openSSL - X509 certifcates
 ## help
@@ -27,6 +30,8 @@
 `sudo openssl req -new -newkey rsa:2048 -keyout key.pem -out req.pem`
 ## or
 `sudo openssl req -new -newkey rsa:2048 -nodes -keyout PRIVATEKEY.key -out MYCSR.csr`
+## or
+`openssl req -new -key my-bank.key -out my-bank.csr -subj "/C=US/ST=CA/O=MyOrg./CN=my-bank.com"`
 # Generate self-signed certificate
 `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout PRIVATEKEY.key -out self-signed.crt`
 ## or
