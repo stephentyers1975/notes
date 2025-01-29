@@ -48,6 +48,8 @@
 `systemctl list-units --all`
 ### or
 `systemctl list-units --type service --all`
+### or
+`systemctl list-unit-files`
 
 # Create custom service
 ## services directory

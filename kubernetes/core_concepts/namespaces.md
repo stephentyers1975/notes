@@ -47,6 +47,12 @@ metadata:
 ## view pods in all namespaces
 `kubectl get pods --all-namespaces`
 
+* use kubens for easier switch
+## switch to a new namespace
+`kubens`
+## switch to previous namespace
+`kubens -`
+
 # Resource quota - limits resource in a namespace
 ```
 apiVersion: v1

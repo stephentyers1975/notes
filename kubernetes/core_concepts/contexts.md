@@ -9,3 +9,11 @@
 `kubectl describe pod kube-apiserver-cluster2-controlplane -n kube-system | grep -i etcd`
 ### or look at the process on control plane
 `ssh cluster2-controlplane ps -ef | grep --color=auto etcd`
+
+* try kubectx to easily switch between contexts
+## switch to new context
+`kubectx`
+## switch back to previous context
+`kubectx -`
+## view current context
+`kubectx -c`
