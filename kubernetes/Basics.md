@@ -39,6 +39,10 @@
 `kubectl logs pod_name`
 ## view container logs inside pod
 `kubectl logs pod_name -c container_name`
+## execute a command inside a pod
+`kubectl exec <pod-name> -- ls /tmp`
+## attach to an interactive shell insidw epod
+`kubectl exec -it <pod-name> -- /bin/bash`
 
 # YAML in Kubernetes
 

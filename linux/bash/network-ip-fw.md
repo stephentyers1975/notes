@@ -67,7 +67,7 @@ network:
 * Mode 5 - adaptive transmit load balancing
 * Mode 6 - adaptive load balancing
 
-## configuring bridigng on Ubuntu
+## configuring bridging on Ubuntu
 
 ## example configuration files
 `/usr/share/doc/netplan/examples/bridge.yaml`
