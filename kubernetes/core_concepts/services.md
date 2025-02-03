@@ -18,6 +18,8 @@
 
 ## create service from definition file
 `kubectl create -f service-definition.yaml`
+# Create a service imperatively for an nginx deployment, which serves on port 80 and connects to the containers on port 8000
+`kubectl expose deployment nginx --port=80 --target-port=8000`
 ## display services
 `kubectl get services`
 ## view url on minikube
