@@ -189,9 +189,12 @@ network:
 `ss -tuln | grep 3003`
 
 # port redirection
-## enable ip forwarding
+## enable ip forwarding - edit file with "│net.ipv4.ip_forward=1"
 `/etc/sysctl.conf`
+### or create new config file with "│net.ipv4.ip_forward=1" setting
 `/etc/sysctl.d/99-sysctl.conf`
+## apply changes
+`sysctl -p`
 ## create redirect rule
 `sudo iptables -t nat -A PREROUTING -i enp1s0 -s 10.0.0.0/24 -p tcp --dport 8080 -j DNAT --to-destination 192.168.0.5:80`
 ## activate masquerading
