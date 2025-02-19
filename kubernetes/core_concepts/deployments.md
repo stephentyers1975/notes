@@ -75,7 +75,13 @@ status: {}
 `kubectl rollout status deployment/deployment_name`
 ## view history of deployment rollout revisions
 `kubectl rollout history deployment/deployment_name`
+## annotate a deployment
+`kubectl annotate deployment nginx kubernetes.io/change-cause="version change to 1.16.0 to latest" --overwrite=true`
 ## rollback deployment
 `kubectl undo deployment/deployment_name`
 ## expose port on a deployment
 `kubectl expose deployment deployment_name --port 80`
+## export loadbalancer on a deployment
+`kubectl expose deployment deployment_name --type=LoadBalancer --port=80 --target-port=80`
+## Scale a deployment 'foo' to 3
+`kubectl scale --replicas=3 deployment/foo`

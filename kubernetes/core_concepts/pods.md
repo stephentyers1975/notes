@@ -37,8 +37,10 @@ spec:
 `kubectl edit pod pod_name`
 ## get pods - extended information
 `kubectl get pods -o wide`
-## get nodes - All namespaces
+## get pods - All namespaces
 `kubectl get pods -A`
+## get pods with filtering for running
+`kubectl get pods --field-selector=status.phase=Running`
 ## create pod
 `kubectl run pod_name --image=container_image_name`
 ## create pod and expose container port
