@@ -18,12 +18,19 @@
 `git add .`
 ## unstage file
 `git reset file1`
+## undo changes to file prior to staging
+`git checkout -- filename `
+## look at particular file state in previous commit by using hash in detached HEAD state - not ideal as it branches our version history
+`git checkout <HASH>`
+## look at particular file/folders state in previous commit by using hash but keeps current HEAD on last commit - ideal `git checkout <HASH> filename/folder/.`
 ## clean repo files - forces the cleaning of untracked files
 `git clean -f`
 ## clean repo files and dirs - forces the cleaning of untracked files
 `git clean -fd`
 ## commit changes
 `git commit -m "commit msg"`
+## overwrite previous commit if you made a mistake in the message or missed adding files to commit
+`git commit -m "corrected commit msg" --amend`
 ## remove unwanted file from project - keep in directory
 `git rm --cached file1`
 ## remove unwanted file from project - Delete from directory
@@ -44,6 +51,8 @@
 `git log origin master`
 ## shows visual commit tree and branch dependencies of other branched
 `git log --graph --decorate`
+## shows visual commit tree 
+`git log --graph --all`
 ## view details of a single change
 `git show hash_numofchange`
 
@@ -66,6 +75,20 @@
 `git branch -d branch_name`
 ## add and commit file at the same time
 `git commit -a -m "message"`
+
+# More checkout commands
+## look at 2 commits prior
+`git checkout HEAD~2`
+## look at particular file state in previous commit by using hash in detached HEAD state - not ideal as it branches our version history
+`git checkout <HASH>`
+### return back to HEAD
+`git checkout branch_name`
+### or
+`git checkout -`
+### or
+`git reflog`
+## go back to the last commit version of file
+`git restore filename`
 
 
 # Merging branches
@@ -97,7 +120,7 @@
 ## git fetch and pull in one command
 `git pull origin master`
 
-# Rebasing - The git rebase command allows you to easily change a series of commits, modifying the history of your repository. You can reorder, edit, or squash commits together.
+# Rebasing - The git rebase command allows you to easily change a series of commits, modifying the history of your repository. You can reorder, edit, or squash commits together. Usuall not run from master/main branch
 `git rebase master` 
 ## interactive rebase - interactively rebase last 4 commits
 `git -i rebase HEAD~4`
