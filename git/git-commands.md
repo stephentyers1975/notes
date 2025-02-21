@@ -17,12 +17,15 @@
 ## stage all changes
 `git add .`
 ## unstage file
-`git reset file1`
+`git reset --staged file1`
 ## undo changes to file prior to staging
-`git checkout -- filename `
+`git checkout -- filename`
+### or
+`git checkout filename`
 ## look at particular file state in previous commit by using hash in detached HEAD state - not ideal as it branches our version history
 `git checkout <HASH>`
-## look at particular file/folders state in previous commit by using hash but keeps current HEAD on last commit - ideal `git checkout <HASH> filename/folder/.`
+## look at particular file/folders state in previous commit by using hash but keeps current HEAD on last commit - ideal 
+`git checkout <HASH> filename/folder/.`
 ## clean repo files - forces the cleaning of untracked files
 `git clean -f`
 ## clean repo files and dirs - forces the cleaning of untracked files
@@ -37,17 +40,17 @@
 `git rm -f file1`
 ## add files to ignore file that you wish git to ignore
 `.gitignore`
-## view commit changes to repo
+## view commit changes to commit log
 `git log`
-## view changes to repo concise on one line
+## view changes to commit log concise on one line
 `git log --oneline`
-## view file name and hash changes to repo
+## view file name and hash changes to commit log
 `git log --raw`
 ## list changed file names
 `git log --name-only`
 ## show last 3 commits
 `git log -n 3`
-## show log of remote repo
+## show log of remote commits
 `git log origin master`
 ## shows visual commit tree and branch dependencies of other branched
 `git log --graph --decorate`
@@ -55,6 +58,12 @@
 `git log --graph --all`
 ## view details of a single change
 `git show hash_numofchange`
+## check differences between unstaged changed file(s) and previous commit
+`git diff`
+## check differences between staged changed file(s) and previous commit
+`git diff --cached`
+## check differences between two different commits
+`git diff <HASH of commit>..<HASH of other commit>`
 
 # GIT branches
 ## create new branch
@@ -81,6 +90,8 @@
 `git checkout HEAD~2`
 ## look at particular file state in previous commit by using hash in detached HEAD state - not ideal as it branches our version history
 `git checkout <HASH>`
+## look at particular file/folders state in previous commit by using hash but keeps current HEAD on last commit - ideal 
+`git checkout <HASH> filename/folder/.`
 ### return back to HEAD
 `git checkout branch_name`
 ### or
@@ -89,14 +100,16 @@
 `git reflog`
 ## go back to the last commit version of file
 `git restore filename`
+### or
+`git checkout filename`
 
 
 # Merging branches
-## switch to master branch you wish to pull changes from new feature branch
+## switch to master branch that you wish to pull changes into from the new feature branch
 `git checkout master`
-## pull to changes to master branch from feature branch - fast forward
+## pull to changes to master branch from the new feature branch - fast forward
 `git merge feature_branch`
-## pull to changes to master branch from feature branch - fast forward
+## pull to changes to master branch from feature branch - no fast forward
 `git merge --no-ff feature_branch`
 
 !['fast-forward'](/images/fastforward.png)
@@ -107,10 +120,18 @@
 `git remote -v`
 ## add remote repo
 `git remote add origin repo_url`
+## remove remote repo
+`git remote remove origin`
 ## push to repo
 `git push origin branch_name`
+## force push to repo overwriting previous commits
+`git push origin branch_name -f`
 ## pull latest code from remote repo
 `git pull origin branch_name`
+## pull latest code from remote repo and set upstream
+`git pull origin branch_name --set-upstream`
+## shortcut pull command if above upstream has been set
+`git pull`
 ## clone repo
 `git clone repogit_url`
 ## update local repo from remote repo
@@ -136,11 +157,13 @@
 !['squash'](/images/squash.png)
 
 # Resetting and Reverting
-## revert commit - undos changes but keeps a log record in the history of previous incorrect commit
+## revert commit - undos changes/deletes files but keeps a log record in the history of previous incorrect commit
 `git revert hash_of_commit`
-## git reset - soft - resets commit and keeps file changes of changed file(s) before commit
+## revert latest commit from HEAD
+`git revert HEAD`
+## git reset - soft - resets commit and keeps staged file changes of changed file(s) before commit
 `git reset --soft HEAD~1`
-## git reset - hard - resets commit but looses file changes of changed file(s) before commit
+## git reset - hard - resets commit but looses/deletes staged file changes of changed file(s) before commit
 `git reset --hard HEAD~1`
 
 # Stash
