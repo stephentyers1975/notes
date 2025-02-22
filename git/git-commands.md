@@ -98,7 +98,7 @@
 `git checkout -`
 ### or
 `git reflog`
-## go back to the last commit version of file
+## go back to the last commit version of file before staging
 `git restore filename`
 ### or
 `git checkout filename`
@@ -185,3 +185,15 @@
 `git reset --hard hash_num`
 
 !['internals'](/images/plumbing.png)
+
+# Tagging
+```
+1.23.444
+major.minor.patch
+```
+## View all tags
+`git tag`
+## view specific tag details
+`git show v2.0.0`
+## add new tag to commit
+`git tag -a v3.5.3 -m "Release 3.5.3`
