@@ -64,6 +64,8 @@
 `sudo adduser --shell /bin/othershell --home /home/otherdir user_name`
 ## manually specify ID
 `sudo adduser --uid 1005 user_id`
+## add user with non-interactive shell
+`useradd --shell /sbin/nologin rose`
 ## example add user
 `useradd -u 1009 -g 1009 -d /home/robert -s /bin/bash -c "Mercury Project Member" bob`
 ## create system account - UID usually < 1000

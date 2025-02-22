@@ -124,6 +124,10 @@ CTLR + D
 `tail +43 dump.sql > dumpfile2`
 ## cut columns out of text file
 `cut -d ' ' -f 1 userinfo.txt`
+### or
+`cut -d: -f1 /etc/passwd`
+## cut columns out of a text file using awk
+`awk -F':' '{print $1}' /etc/passwd`
 ## remove repeated entries that are next to eachother
 `uniq countries.txt`
 ## sort
