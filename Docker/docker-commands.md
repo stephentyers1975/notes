@@ -48,7 +48,7 @@
 
 # Create your own image
 ## Build image from Dockerfile locally command
-`docker build -t registry_name/my-custom-app-image Dockerfile`
+`docker build -t registry_name/my-custom-app-image .`
 ## login to registry
 `docker login`
 ## Push built image to registry command
@@ -57,6 +57,8 @@
 `docker history registry_name/my-custom-app-image`
 ## remove dangling images
 `docker image prune -a`
+## build image from running container
+`docker commit container_id image_name:tag`
 
 # Environment variables
 ## inject environment variable at run

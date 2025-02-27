@@ -6,25 +6,25 @@
 
 # replication controller yaml
 ```
-apiVersion: app
+apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: myapp-rc
-  labels:
-    app: myapp
-    type: front-end
+  name: nginx-replicationcontroller-t3q5
 spec:
+  replicas: 3
+  selector:
+    app: nginx
   template:
     metadata:
-    name: myapp-pod
-    labels:
-      app: myapp
-      type: front-end
+      name: nginx
+      labels:
+        app: nginx
     spec:
       containers:
-        - name: nginx-container
-          image: nginx
-  replicas: 3
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
 ```
 # replica set yaml
 ```

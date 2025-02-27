@@ -76,4 +76,4 @@ spec:
 # Update a single-container pod's image version (tag) to v4
 `kubectl get pod mypod -o yaml | sed 's/\(image: myimage\):.*$/\1:v4/' | kubectl replace -f -`
 # Force replace, delete and then re-create the resource
-`kubectl replace --force -f ./pod.json`
+`kubectl replace --force -f ./pod.yaml`

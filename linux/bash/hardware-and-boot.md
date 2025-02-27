@@ -23,6 +23,8 @@
 # Boot Process -> BIOS POST -> Boot Loader(GRUB2 1st sector of HD /bootfile) -> Kernel Initilization -> INIT Process(SYSTEMD)
 ## check init system that used - systemd or system5
 `ls -l /sbin/init`
+### or check PID 1
+`ps 1`
 ## check run level 3=cmdline -> systemd(multiuser.target) 5=gui -> systemd(graphical.target)
 `runlevel`
 # check and change systemd run target

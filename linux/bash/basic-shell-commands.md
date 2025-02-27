@@ -120,6 +120,8 @@ CTLR + D
 `sed -i '500,2000s/enabled/disabled/gI' /home/bob/values.conf`
 ## delete first 42 lines with SED
 `sed -i 1,42d dump.sql`
+## search and replace using word boundaries and writing to new file
+`sed 's/\band\b/for/g' /home/BSD.txt > /home/BSD_REPLACE.txt`
 ## delete first 42 lines with tail
 `tail +43 dump.sql > dumpfile2`
 ## cut columns out of text file

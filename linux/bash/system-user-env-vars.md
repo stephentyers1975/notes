@@ -13,6 +13,8 @@
 `/ect/profile.d/`
 ## user skeleton file - provides the default settings for a new user's home directory, copies files from this directory to the new users home dir
 `/etc/skel`
+## message of the day/login banner location
+`/etc/motd`
 
 # User resource limits
 ## limits file location

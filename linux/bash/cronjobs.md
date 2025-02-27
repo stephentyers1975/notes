@@ -1,6 +1,9 @@
 # CRON jobs (crond service)
+## install cronie
+`yum install cronie`
 
 image[cron reference](/images/cron.png)
+
 ## edit cron jobs
 `crontab -e`
 ## tab fields

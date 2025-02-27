@@ -75,6 +75,10 @@ status: {}
 `kubectl rollout status deployment/deployment_name`
 ## view history of deployment rollout revisions
 `kubectl rollout history deployment/deployment_name`
+## rollback deployment
+`kubectl rollout undo deployment/nginx-deployment`
+## rollback deployment to particular revision from rollout history
+`kubectl rollout undo deployment/nginx-deployment --revision=2`
 ## annotate a deployment
 `kubectl annotate deployment nginx kubernetes.io/change-cause="version change to 1.16.0 to latest" --overwrite=true`
 ## rollback deployment

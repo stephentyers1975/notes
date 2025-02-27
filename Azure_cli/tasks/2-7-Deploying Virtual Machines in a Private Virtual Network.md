@@ -1,1 +1,0 @@
-# Deploying Virtual Machines in a Private Virtual Network
