@@ -44,5 +44,7 @@
 `/etc/nsswitch.conf`  
 ## check if port is open and listening
 `netstat -an | grep 80 | grep -i LISTEN`
+### or with ss if net-tools not installed
+`ss -tulnp`
 ## check connectivity with netcat
 `nc localhost 8080`

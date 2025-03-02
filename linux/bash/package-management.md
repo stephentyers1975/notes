@@ -26,6 +26,21 @@
 `yum update example_packages`
 ### update all packages
 `yum update`
+### configure new repo
+`vi /etc/yum.repos.d/local_yum.repo`
+```
+[local_yum]
+name=Local YUM Repository
+baseurl=file:///packages/downloaded_rpms/
+enabled=1
+gpgcheck=0
+
+```
+### check new repo is in list
+`yum repolist`
+### install package from new repo
+`yum install --enablerepo=local_yum package_name -y`
+
 ## DPKG Package Manager - Low Level Package Manager from Debian, does not deal with dependencies
 ### Install
 `dpkg -i telnet.rpm`

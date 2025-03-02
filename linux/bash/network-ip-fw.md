@@ -150,6 +150,10 @@ network:
 `sudo apt install iptables`
 ## list default rules
 `iptables -L`
+## list rules in specific chain
+`iptables -L chain_name`
+## list rules in specific chain with line numbers
+`sudo iptables -L INPUT --line-numbers`
 ## command key
 -A -> Add rule to bottom of list
 -I -> Add rule to top of list or index number after chain name (INPUT 2 e.g.) 
@@ -173,6 +177,19 @@ network:
 `iptables -A OUTPUT -p TCP -d 172.16.238.15 --dport 80 -j ACCEPT`
 `iptables -A OUTPUT -p TCP --dport 80 -j DROP`
 `iptables -A OUTPUT -p TCP --dport 443 -j DROP`
+## make rules persistent (APT system)
+```
+sudo apt-get install iptables-persistent -y
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+
+```
+## make rules persistent (service iptable)
+```
+sudo service iptables save
+sudo service iptables restart
+
+```
 
 # Firewalld
 ## list active zones
