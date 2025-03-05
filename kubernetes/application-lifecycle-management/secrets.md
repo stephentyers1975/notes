@@ -16,7 +16,7 @@ kubectl create secret generic \
   <secret-name> --from-literal=<key>=<value>
 
 kubectl create secret generic \
-  app-secrert --from-literal=DB_HOST=mysql \
+  app-secret --from-literal=DB_HOST=mysql \
               --from-literal=DB_USER=root  \
               --from-literal=DB_PASSWORD=paswrd
 ```

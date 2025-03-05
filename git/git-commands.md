@@ -157,14 +157,16 @@
 !['squash'](/images/squash.png)
 
 # Resetting and Reverting
-## revert commit - undos changes/deletes files but keeps a log record in the history of previous incorrect commit
+## revert commit - undos changes/deletes files but keeps a log record in the history of previous incorrect commits
 `git revert hash_of_commit`
 ## revert latest commit from HEAD
 `git revert HEAD`
-## git reset - soft - resets commit and keeps staged file changes of changed file(s) before commit
+## git reset - soft - resets commit history and keeps staged file changes of changed file(s) before commit
 `git reset --soft HEAD~1`
-## git reset - hard - resets commit but looses/deletes staged file changes of changed file(s) before commit
+## git reset - hard - resets commit history but looses/deletes staged file changes of changed file(s) before commit
 `git reset --hard HEAD~1`
+## force pushed changes to hard reset remote branch
+`git push origin master --force`
 
 # Stash
 ## push changes to temporary stash area
@@ -183,6 +185,8 @@
 `git reflog`
 ## reset back using hash
 `git reset --hard hash_num`
+## force pushed changes to hard reset remote branch
+`git push origin master --force`
 
 !['internals'](/images/plumbing.png)
 
@@ -197,3 +201,7 @@ major.minor.patch
 `git show v2.0.0`
 ## add new tag to commit
 `git tag -a v3.5.3 -m "Release 3.5.3`
+
+# cherry-pick - merge selective commits to a branch
+## switch to target branch and cherry-pick commit by hash from feature branch
+`git cherry-pick ddf6c2b`

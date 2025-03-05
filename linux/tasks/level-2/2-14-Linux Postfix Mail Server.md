@@ -61,6 +61,7 @@ Connection closed by foreign host.
 `yum install -y dovecot`
 `vi /etc/dovecot/dovecot.conf`
 ```
+listen = *, ::
 protocols = imap pop3 lmtp submission
 ```
 `vi /etc/dovecot/conf.d/10-mail.conf`
