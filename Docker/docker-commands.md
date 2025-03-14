@@ -33,6 +33,8 @@
 `docker run -i centos bash`
 ## run container with interactive terminal
 `docker run -it centos bash`
+## returns information for the container such as percentage CPU usage, percentage memory usage, I/O written to disk, network data sent and received, and process IDs assigned.
+`docker stats container_name`
 
 # Mapped port
 ## run container with mapped port

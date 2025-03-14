@@ -51,6 +51,8 @@
 `ls`
 ## List long list files and folders
 `ls -l`
+## List long list files and folders sorted by size
+`ls -lS`
 ## List hidden files and folders
 `ls -a`
 ## List in human readable format -> bytes / kilobytes etc
