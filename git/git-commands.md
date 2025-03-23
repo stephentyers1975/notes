@@ -65,6 +65,21 @@
 ## check differences between two different commits
 `git diff <HASH of commit>..<HASH of other commit>`
 
+# edit previous commit
+## edit file
+`git add file_name`
+`git commit --amend`
+`git commit --amend --no-edit`
+# edit previous commit further back in history
+```
+git rebase -i <commit> opens an interactive session where you can:
+pick: Use the commit as is.
+edit: Stop and allow amending the commit.
+reword: Change the commit message.
+squash: Combine commits.
+By changing the word "pick" to "edit", git will stop the rebase at that commit, and allow you to make changes, and then git commit --amend those changes.
+```
+
 # GIT branches
 ## create new branch
 `git branch branch_name`
