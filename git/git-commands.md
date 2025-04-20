@@ -16,6 +16,8 @@
 `git add "products/*.html"`
 ## stage all changes
 `git add .`
+## stage and show whats changed in files
+`git add -p`
 ## unstage file
 `git reset --staged file1`
 ## undo changes to file prior to staging
@@ -32,8 +34,14 @@
 `git clean -fd`
 ## commit changes
 `git commit -m "commit msg"`
-## overwrite previous commit if you made a mistake in the message or missed adding files to commit
+## overwrite previous commit if you made a mistake in the message or missed adding files(must stage files first) to commit
 `git commit -m "corrected commit msg" --amend`
+### or -> pop up message will appear to edit previous commit msg
+`git add <file1> <file2>`
+`git commit --amend`
+### or -> add or change files without changing commit message
+`git add <file>`
+`git commit --amend --no-edit`
 ## remove unwanted file from project - keep in directory
 `git rm --cached file1`
 ## remove unwanted file from project - Delete from directory
@@ -64,6 +72,8 @@
 `git diff --cached`
 ## check differences between two different commits
 `git diff <HASH of commit>..<HASH of other commit>`
+## check differences between two different branches
+`git diff <name of one branch>..<name of another branch>`
 
 # edit previous commit
 ## edit file
@@ -126,6 +136,8 @@ By changing the word "pick" to "edit", git will stop the rebase at that commit, 
 `git merge feature_branch`
 ## pull to changes to master branch from feature branch - no fast forward
 `git merge --no-ff feature_branch`
+## show which branched have been merged
+`git branch --merged`
 
 !['fast-forward'](/images/fastforward.png)
 * no fast forward shows you the commit history objects from the other feature branch that makes up the new merge features. Useful if you need to roll backup
@@ -135,6 +147,8 @@ By changing the word "pick" to "edit", git will stop the rebase at that commit, 
 `git remote -v`
 ## add remote repo
 `git remote add origin repo_url`
+## add remote upstream from branch (if you forked another users code)
+`git remote add upstream <URL of repo>`
 ## remove remote repo
 `git remote remove origin`
 ## push to repo
@@ -143,6 +157,8 @@ By changing the word "pick" to "edit", git will stop the rebase at that commit, 
 `git push origin branch_name -f`
 ## pull latest code from remote repo
 `git pull origin branch_name`
+## setup parameterless pull/push
+`git push -u origin main`
 ## pull latest code from remote repo and set upstream
 `git pull origin branch_name --set-upstream`
 ## shortcut pull command if above upstream has been set
@@ -155,6 +171,8 @@ By changing the word "pick" to "edit", git will stop the rebase at that commit, 
 `git merge origin/master`
 ## git fetch and pull in one command
 `git pull origin master`
+## delete remote branch
+`git push origin --delete <branch_name>`
 
 # Rebasing - The git rebase command allows you to easily change a series of commits, modifying the history of your repository. You can reorder, edit, or squash commits together. Usuall not run from master/main branch
 `git rebase master` 

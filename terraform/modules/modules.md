@@ -13,7 +13,7 @@ module "dev-webserver" {
 ```
 ## create a new module
 ### module directory
-`mkdir /root/terraform-projects/modules/payrool-app`
+`mkdir /root/terraform-projects/modules/payroll-app`
 * app_server.tf
 * dynamodb.tf
 * s3_bucker.tf

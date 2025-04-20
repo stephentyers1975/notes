@@ -1,4 +1,8 @@
 # Services
+
+* Every time you create a Service, the EndpointSlice controller automatically creates an associated EndpointSlice object.
+* Kubernetes then watches the cluster, looking for Pods matching the Service’s label selector. Any new Pods matching the selector
+get added to the EndpointSlice, whereas any deleted Pods get removed.
 * NodePort -> listens to port on the cluster node and forwards requests to pods
 * ClusterIP -> creates VIP inside cluster to enable connectivity between different services i.e. frontend to backend
 * LoadBalancer -> Provisions loadbalancer in supported cloud providers
