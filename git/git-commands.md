@@ -166,13 +166,15 @@ By changing the word "pick" to "edit", git will stop the rebase at that commit, 
 ## clone repo
 `git clone repogit_url`
 ## update local repo from remote repo
-`git fetch origin master`
+`git fetch origin branch_name`
 ### then
 `git merge origin/master`
 ## git fetch and pull in one command
 `git pull origin master`
 ## delete remote branch
 `git push origin --delete <branch_name>`
+## prune deleted remote branches from local
+`git fetch origin --prune`
 
 # Rebasing - The git rebase command allows you to easily change a series of commits, modifying the history of your repository. You can reorder, edit, or squash commits together. Usuall not run from master/main branch
 `git rebase master` 
