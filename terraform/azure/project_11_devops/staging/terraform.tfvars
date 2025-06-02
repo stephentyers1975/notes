@@ -1,0 +1,6 @@
+rgname                 = "stage-tyers-rg"
+service_principal_name = "stage-tyers-spn"
+keyvault_name          = "stage-tyers-kv-101"
+SUB_ID = ""
+node_pool_name = "stagenp"
+cluster_name = "stage-tyers-cluster"

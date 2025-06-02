@@ -1,0 +1,6 @@
+rgname                 = "dev-tyers-rg"
+service_principal_name = "dev-tyers-spn"
+keyvault_name          = "dev-tyers-kv-101"
+SUB_ID = ""
+cluster_name = "dev-tyers-cluster"
+node_pool_name = "devnp"
