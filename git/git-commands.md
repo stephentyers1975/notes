@@ -198,7 +198,7 @@ By changing the word "pick" to "edit", git will stop the rebase at that commit, 
 `git revert HEAD`
 ## git reset - soft - resets commit history and keeps staged file changes of changed file(s) before commit
 `git reset --soft HEAD~1`
-## git reset - hard - resets commit history but looses/deletes staged file changes of changed file(s) before commit
+## git reset - hard - resets commit history but looses/deletes staged file changes/working directory changed file(s) before commit
 `git reset --hard HEAD~1`
 ## force pushed changes to hard reset remote branch
 `git push origin master --force`
