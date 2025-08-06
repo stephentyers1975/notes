@@ -1,4 +1,5 @@
 # GIT
+
 ## config global username and email - not login information, but for repo changes. If global emitted the details will be set on a per repo basis
 `git config --global user.name "steve"`
 `git config --global user.email "steve@email.com"`
